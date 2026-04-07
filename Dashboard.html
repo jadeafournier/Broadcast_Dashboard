@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDT-GBP Broadcast Dashboard</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                max-width: 600px;
+                margin: 50px auto;
+                padding: 20px;
+                background: #f5f5f5;
+            }
+            h1 {
+                color: #2c3e50;
+                text-align: center;
+            }
+            .card {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            input, textarea, select {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+            button {
+                width: 100%;
+                padding: 15px;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                font-size: 16px;
+            cursor: pointer;
+            }
+            .national { background: #27ae60; }
+            .bpr { background: #2980b9; }
+            .city { background: #e67e22; }
+            .status {
+                text-align: center;
+                padding: 10px;
+                margin-top: 10px;
+                border-radius: 5px;
+                display: none;
+            }
+            .success { background: #d4edda; color: #155724; }
+            .error { background: #f8d7da; color: #721c24; }
+        </style>
+    </head>
+    <body>
+
+    <h1>📢 CDT-GBP Broadcast Dashboard</h1>
+
+    <!-- Message Box -->
+    <div class="card">
+        <h3>✏️ Message</h3>
+        <textarea id="message" rows="4" 
+        placeholder="Type your message here..."></textarea>
+    </div>
+
+    <!-- National Broadcast -->
+    <div class="card">
+        <h3>🌍 National Broadcast</h3>
+        <p>Send to ALL active agents nationwide</p>
+        <button class="national" 
+        onclick="sendBroadcast('national')">
+        🚀 Send National Broadcast
+        </button>
+    </div>
+
+    <!-- BPR Broadcast -->
+    <div class="card">
+        <h3>📍 BPR Broadcast</h3>
+        <select id="bpr">
+            <option value="">Select BPR Region</option>
+            <option value="BPR-TT">BPR Tanger-Tétouan</option>
+            <option value="BPR-CB">BPR Casablanca (BCP)</option>
+            <option value="BPR-RK">BPR Rabat-Kénitra</option>
+            <option value="BPR-FM">BPR Fès-Meknès</option>
+            <option value="BPR-MM">BPR Marrakech-Béni Mellal</option>
+            <option value="BPR-AC">BPR Agadir (Centre-Sud)</option>
+            <option value="BPR-QU">BPR Oujda</option>
+            <option value="BPR-LA">BPR Laâyoune</option>
+        </select>
+        <button class="bpr" 
+            onclick="sendBroadcast('bpr')">
+            🚀 Send BPR Broadcast
+        </button>
+    </div>
+
+    <!-- City Broadcast -->
+    <div class="card">
+        <h3>🏙️ City Broadcast</h3>
+        <select id="city">
+        <option value="">Select City</option>
+        <option value="Tangier">Tangier</option>
+        <option value="Rabat">Rabat</option>
+        <option value="Casablanca">Casablanca</option>
+        <option value="Fes">Fes</option>
+        <option value="Marrakech">Marrakech</option>
+        </select>
+        <button class="city" 
+            onclick="sendBroadcast('city')">
+            🚀 Send City Broadcast
+        </button>
+    </div>
+
+    <!-- Status Message -->
+    <div id="status" class="status"></div>
+
+    <script>
+        const WEBHOOK_URL = "https://hook.eu1.make.com/wkw7re6u66jexxg5nr7p18xhbmvtwn21";
+
+        async function sendBroadcast(type) {
+            const message = document.getElementById("message").value;
+
+            if (!message) {
+                showStatus("Please type a message first!", "error");
+                return;
+            }
+
+            let data = { type: type, message: message };
+
+            if (type === "bpr") {
+                const bpr = document.getElementById("bpr").value;
+                if (!bpr) {
+                    showStatus("Please select a BPR region!", "error");
+                    return;
+                }
+                data.bpr = bpr;
+            }
+
+            if (type === "city") {
+                const city = document.getElementById("city").value;
+                if (!city) {
+                showStatus("Please select a city!", "error");
+                    return;
+                }
+                data.city = city;
+            }
+
+            try {
+                showStatus("Sending broadcast...", "success");
+                await fetch(WEBHOOK_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+                showStatus("✅ Broadcast sent successfully!", "success");
+            } catch (error) {
+                showStatus("❌ Error sending broadcast. Try again.", "error");
+        }
+        }
+
+        function showStatus(msg, type) {
+            const status = document.getElementById("status");
+            status.textContent = msg;
+            status.className = "status " + type;
+            status.style.display = "block";
+        }
+    </script>
+
+    </body>
+</html>
