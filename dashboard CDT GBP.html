@@ -8,7 +8,7 @@
       @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
       :root {
         --gold:#C9952A; --gold-light:#F0B429; --gold-dark:#7A5A00; --gold-bg:#FFFBF0; --gold-pale:#FFF8DC;
-        --green:#006233; --green-light:#00843D; --red:#C1272D;
+        --green:#006233; --green-light:#00843D; --red:#C1272D; --blue:#3627c1;
         --dark:#2A1F00; --dark2:#3D2E00;
         --bg:#FFFDF5; --white:#FFFFFF; --border:#EDD98A; --gray:#F7F2E0; --gray-dark:#7A6A3A;
         --shadow:0 4px 20px rgba(201,149,42,0.18); --radius:16px;
@@ -89,13 +89,13 @@
       .btn.dark{background:linear-gradient(135deg,var(--dark),var(--dark2));color:white;}
       .btn.sm{padding:6px 12px;font-size:11px;width:auto;margin:0;}
       .badge{padding:3px 9px;border-radius:18px;font-size:11px;font-weight:700;}
+      .agent-badge{padding:3px 9px;border-radius:18px;font-size:11px;font-weight:700;border-color: floralwhite;border-width: 1px;}
       .bg-gold{background:#fff3cc;color:var(--gold-dark);}
       .bg-green{background:#e8f5e9;color:var(--green);}
       .bg-red{background:#fdecea;color:var(--red);}
       .bg-amber{background:#fff8e1;color:#b7860a;}
       .bg-gray{background:#f5f5f5;color:#555;}
       .aitem{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border);}
-      .aitem:last-child{border-bottom:none;}
       .ainfo{flex:1;}
       .aname{font-size:13px;font-weight:700;color:var(--dark);}
       .adetail{font-size:11px;color:var(--gray-dark);margin-top:2px;}
@@ -157,9 +157,14 @@
       .caltitle{font-size:13px;font-weight:700;color:var(--dark);}
       .caldesc{font-size:11px;color:var(--gray-dark);margin-top:2px;}
       .bprmap{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px;}
+      .agentmap{display:grid;gap:7px;margin-top:8px;}
       .bpritem{background:var(--gray);border-radius:10px;padding:10px;text-align:center;border:2px solid var(--border);cursor:pointer;transition:all 0.2s;}
       .bpritem:active{transform:scale(0.97);}
       .bpritem.sel{border-color:var(--gold);background:var(--gold-pale);}
+      
+      .notifitem{border-radius:10px;padding:10px;text-align:center;border:2px solid var(--border);cursor:pointer;transition:all 0.2s;font-size:12px;}
+      .notifitem:active{transform:scale(0.97);}
+
       .bprname{font-size:11px;font-weight:700;color:var(--dark);margin-bottom:4px;}
       .bprcount{font-size:22px;font-weight:900;color:var(--gold-dark);}
       .bprlabel{font-size:10px;color:var(--gray-dark);}
@@ -207,6 +212,7 @@
       .footer img{width:36px;height:36px;border-radius:50%;margin-bottom:7px;display:block;margin-left:auto;margin-right:auto;border:2px solid var(--gold);}
       .footer strong{color:var(--gold-dark);}
       #hist-list {display: flex; flex-direction: column; gap: 10px; padding: 10px; max-height: 400px; overflow-y: auto;}
+      #notif-recent-list {display: flex; flex-direction: column; gap: 3px; padding: 10px; max-height: 400px; overflow-y: auto;}
       .broadcast-card {background: var(--white, #fff); border: 1px solid #e0d9c8; border-radius: 10px; padding: 12px 15px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);}
       .broadcast-card-header {display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;}
       .broadcast-date {font-size: 12px; color: var(--gray-dark, #888);}
@@ -219,160 +225,6 @@
       .type-national { background: #ffe5b4; color: #856404; }
       .status-badge  { background: #d4edda; color: #155724; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: bold;}
 
-
-
-      /* Alert Counters */
-      .alert-counters {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        margin-bottom: 15px;
-      }
-      .alert-counter {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      }
-      .alert-counter.urgent {
-        border: 2px solid #e74c3c;
-      }
-      .alert-counter.warning {
-        border: 2px solid #f39c12;
-      }
-      .counter-number {
-        font-size: 36px;
-        font-weight: bold;
-        color: #e74c3c;
-      }
-      .alert-counter.warning .counter-number {
-        color: #f39c12;
-      }
-      .counter-label {
-        font-size: 13px;
-        color: #888;
-        margin-top: 5px;
-      }
-
-      /* Keywords */
-      .keywords-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 15px;
-      }
-      .keyword-badge {
-        background: #fff3e0;
-        border: 1px solid #f39c12;
-        color: #e67e22;
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 13px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-      .keyword-badge.urgent {
-        background: #fdecea;
-        border-color: #e74c3c;
-        color: #c0392b;
-      }
-      .keyword-badge:hover {
-        opacity: 0.8;
-      }
-      .btn-gold {
-        background: linear-gradient(
-          #d4a017, #b8860b
-        );
-        color: white;
-        border: none;
-        padding: 12px;
-        border-radius: 8px;
-        width: 100%;
-        cursor: pointer;
-        font-size: 15px;
-        margin-top: 10px;
-      }
-
-      /* Active Alert Cards */
-      .alert-card {
-        background: #fdecea;
-        border-left: 4px solid #e74c3c;
-        padding: 12px;
-        border-radius: 8px;
-        margin-bottom: 10px;
-      }
-      .alert-card.warning {
-        background: #fff8e1;
-        border-left-color: #f39c12;
-      }
-      .alert-title {
-        font-weight: bold;
-        color: #c0392b;
-        font-size: 14px;
-      }
-      .alert-card.warning .alert-title {
-        color: #e67e22;
-      }
-      .alert-detail {
-        font-size: 12px;
-        color: #888;
-        margin-top: 5px;
-      }
-      .no-alerts {
-        text-align: center;
-        color: #27ae60;
-        padding: 20px;
-      }
-
-      /* Stats Bars */
-      .stat-bar-row {
-        display: flex;
-        align-items: center;
-        margin-bottom: 12px;
-        gap: 10px;
-      }
-      .stat-bar-label {
-        width: 120px;
-        font-size: 13px;
-        color: #555;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-      .stat-bar-container {
-        flex: 1;
-        background: #f5f5f5;
-        border-radius: 10px;
-        height: 12px;
-        overflow: hidden;
-      }
-      .stat-bar-fill {
-        height: 100%;
-        border-radius: 10px;
-        background: linear-gradient(
-          #d4a017, #f39c12
-        );
-        transition: width 0.5s ease;
-      }
-      .stat-bar-count {
-        width: 30px;
-        text-align: right;
-        font-weight: bold;
-        color: #e74c3c;
-        font-size: 13px;
-      }
-      .stats-note {
-        font-size: 12px;
-        color: #888;
-        text-align: center;
-        margin-top: 15px;
-        padding: 10px;
-        background: #fff8e1;
-        border-radius: 8px;
-      }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <style>
@@ -414,8 +266,8 @@
         <!-- FORMULAIRE ADMIN : clé + mot de passe -->
         <div id="form-admin" style="display:none;">
           <div class="lf"><label>🔐 Clé de connexion</label><input type="password" id="login-key" placeholder="••••••••••••••••••"></div>
-          <div class="lf"><label>🔑 Mot de passe</label><input type="password" id="login-pwd" placeholder="Votre mot de passe Admin"></div>
-          <button class="btn-login" onclick="doLogin()">🦁 Accéder au tableau de bord</button>
+          <div class="lf"><label>🔑 Mot de passe</label><input type="password" id="login-pwd-admin" placeholder="Votre mot de passe Admin"></div>
+          <button class="btn-login" onclick="doLoginAdmin()">🦁 Accéder au tableau de bord</button>
         </div>
 
       </div>
@@ -471,7 +323,7 @@
               <span>📊 Total : <strong style="color:var(--dark);" id="perf-total">—</strong></span>
             </div>
             <div style="margin-top:8px;font-size:11px;color:var(--gray-dark);background:var(--gold-pale);padding:7px 10px;border-radius:7px;">
-              💡 Les statistiques de performance seront disponibles dès que Khansa connecte la sauvegarde des conversations dans Supabase.
+              💡 Les statistiques de performance seront disponibles dès que la sauvegarde des conversations dans Supabase est connectée.
             </div>
           </div>
           <div class="card">
@@ -507,6 +359,7 @@
 
         <div id="s-agents" class="section">
           <div class="stitle">👥 Gestion des Agents</div>
+          <button class="btn gold" onclick="openModal('m-agent')">➕ Ajouter l'agent</button>
           <div class="sbar">
             <input type="text" id="agent-q" placeholder="Nom, numéro, ville, BPR..." oninput="searchAgents()">
               <button class="sbtn">🔍</button>
@@ -517,7 +370,13 @@
             <button class="btn dark sm" onclick="filterStatus('Actif')">✅ Actifs</button>
             <button class="btn gray sm" onclick="filterStatus('Inactif')">🔴 Inactifs</button>
           </div>
-          <div class="card"><div id="agents-list"><div class="loading"><div class="spinner"></div>Chargement...</div></div></div>
+          <div class="card">   
+            <div class = "agentmap" id="agents-list"> 
+              <div class="loading">
+                <div class="spinner"></div>Chargement...
+              </div>
+            </div>
+          </div>
         </div>
 
         <div id="s-diffusion" class="section">
@@ -561,6 +420,7 @@
         </div>
 
         <div id="s-conversations" class="section">
+
           <div class="stitle">💬 Conversations</div>
           <div style="background:var(--gold-pale);border:1px solid var(--gold);border-radius:10px;padding:11px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;">
             <span style="font-size:18px;">👑</span>
@@ -570,11 +430,8 @@
             </div>
           </div>
           <div class="sbar"><input type="text" id="conv-q" placeholder="Mot clé, numéro, sujet..." oninput="searchConvs()"><button class="sbtn">🔍</button></div>
-          <div class="ktags" style="margin-bottom:11px;">
-            <span class="ktag urgent" onclick="fconv('licenciement')">licenciement</span><span class="ktag urgent" onclick="fconv('harcèlement')">harcèlement</span>
-            <span class="ktag urgent" onclick="fconv('discipline')">discipline</span><span class="ktag warning" onclick="fconv('retraite')">retraite</span>
-            <span class="ktag warning" onclick="fconv('congé')">congé</span><span class="ktag info" onclick="fconv('crédit')">crédit PL2P</span>
-            <span class="ktag info" onclick="fconv('MPBP')">MPBP</span><span class="ktag info" onclick="fconv('mutation')">mutation</span>
+          <div class="ktags" style="margin-bottom:11px;" id="conv-kw-list">
+            <div class="loading"><div class="spinner"></div>Keyword...</div>
           </div>
           <div class="card"><div id="conv-list"><div class="loading"><div class="spinner"></div>Chargement...</div></div></div>
         </div>
@@ -586,74 +443,26 @@
             <div class="scard r"><div class="snum" id="al-urgentes">0</div><div class="slabel">🔴 Urgentes</div></div>
             <div class="scard"><div class="snum" id="al-attention">0</div><div class="slabel">⚠️ Attention</div></div>
           </div>
-          <div class="card"><div class="ctitle">🔴 Mots clés surveillés</div>
+          <div class="card">
+            <div class="ctitle">🔴 Mots clés surveillés</div>
             <div class="ktags" style="margin-bottom:11px;" id="kw-list">
-              <span class="ktag urgent">licenciement</span><span class="ktag urgent">harcèlement</span><span class="ktag urgent">révocation</span><span class="ktag urgent">tribunal</span><span class="ktag urgent">avocat</span>
-              <span class="ktag warning">discipline</span><span class="ktag warning">sanction</span><span class="ktag warning">injustice</span><span class="ktag warning">blâme</span><span class="ktag warning">mutation forcée</span>
-              <span class="ktag info">démission</span><span class="ktag info">disponibilité</span>
+              <div class="loading"><div class="spinner"></div>Keywrod...</div>
             </div>
             <button class="btn gold" onclick="openModal('m-kw')">➕ Ajouter mot clé</button>
           </div>
           <div class="card">
             <div class="ctitle">🚨 Alertes actives</div>
-            <div style="text-align:center;padding:20px;color:var(--gray-dark);font-size:13px;">✅ Aucune alerte active pour l'instant</div>
+            <div id="active-alerts" style="text-align:center;padding:20px;color:var(--gray-dark);font-size:13px;">✅ Aucune alerte active pour l'instant</div>
           </div>
           <div class="card">
             <div class="ctitle">📊 Statistiques alertes ce mois</div>
             <div id="alertes-stats-list">
-              <div class="titem"><div class="tname">🔴 licenciement</div><div class="tbar"><div class="tfill r" id="bar-al1" style="width:0%"></div></div><div class="tcount" id="al-stat1" style="color:var(--red);">0</div></div>
-              <div class="titem"><div class="tname">🔴 discipline</div><div class="tbar"><div class="tfill r" id="bar-al2" style="width:0%"></div></div><div class="tcount" id="al-stat2" style="color:var(--red);">0</div></div>
-              <div class="titem"><div class="tname">⚠️ sanction</div><div class="tbar"><div class="tfill" id="bar-al3" style="width:0%"></div></div><div class="tcount" id="al-stat3">0</div></div>
-              <div class="titem"><div class="tname">⚠️ harcèlement</div><div class="tbar"><div class="tfill" id="bar-al4" style="width:0%"></div></div><div class="tcount" id="al-stat4">0</div></div>
+              <div class="loading"><div class="spinner"></div>Statistiques...</div>
             </div>
             <div style="margin-top:8px;font-size:11px;color:var(--gray-dark);background:var(--gold-pale);padding:7px 10px;border-radius:7px;">
               💡 Ces statistiques seront calculées en temps réel depuis Supabase.
             </div>
           </div>
-
-
-
-          <!-- ALERTS TAB -->
-
-            <!-- Top Counters -->
-            <!-- <div class="alert-counters">
-              <div class="alert-counter urgent">
-                <div class="counter-number" 
-                id="urgentCount">0</div>
-                <div class="counter-label">
-                  🔴 Urgent
-                </div>
-              </div>
-              <div class="alert-counter warning">
-                <div class="counter-number"
-                id="warningCount">0</div>
-                <div class="counter-label">
-                  ⚠️ Warning
-                </div>
-              </div>
-            </div> -->
-
-
-            <!-- Active Alerts -->
-            <!-- <div class="card">
-              <h3>🚨 Active alerts</h3>
-              <div id="activeAlerts">
-                <p class="no-alerts">
-                  ✅ No active alerts at the moment
-                </p>
-              </div>
-            </div> -->
-
-            <!-- Statistical Alerts -->
-            <!-- <div class="card">
-              <h3>📊 Statistical alerts this month</h3>
-              <div id="statsAlerts"></div>
-              <p class="stats-note">
-                💡 These statistics will be 
-                calculated in real time from Supabase.
-              </p>
-            </div> -->
-
 
         </div>
 
@@ -676,18 +485,19 @@
         <div id="s-calendrier" class="section">
           <div class="stitle">📅 Calendrier Syndical</div>
           <div style="margin-bottom:11px;"><button class="btn gold sm" onclick="openModal('m-event')">➕ Ajouter événement</button></div>
-          <div class="card"><div class="ctitle">📌 Événements à venir</div>
-            <div class="calitem"><div class="caldate"><div class="calday">10</div><div class="calmonth">AVR</div></div><div><div class="caltitle">⚖️ Audience conseil de discipline</div><div class="caldesc">Agent BPR Casablanca — Accompagnement SNGBP-CDT requis</div></div></div>
-            <div class="calitem"><div class="caldate"><div class="calday">15</div><div class="calmonth">AVR</div></div><div><div class="caltitle">📋 Réunion délégués SNGBP-CDT</div><div class="caldesc">Bilan mensuel — Toutes les BPR</div></div></div>
-            <div class="calitem"><div class="caldate" style="background:var(--red);"><div class="calday">30</div><div class="calmonth">AVR</div></div><div><div class="caltitle">⏰ Délai déclaration cycle scolaire</div><div class="caldesc">Date limite DRH — Informer les agents concernés</div></div></div>
-            <div class="calitem"><div class="caldate" style="background:var(--green);"><div class="calday">30</div><div class="calmonth">NOV</div></div><div><div class="caltitle">📚 Aide scolaire annuelle</div><div class="caldesc">Justificatifs à remettre à la DRH avant cette date</div></div></div>
-            <div class="calitem"><div class="caldate" style="background:var(--gold-dark);"><div class="calday">31</div><div class="calmonth">DÉC</div></div><div><div class="caltitle">🏖️ Limite liquidation congés annuels</div><div class="caldesc">Rappeler aux agents de liquider leur reliquat</div></div></div>
+          <div class="card"><div class="ctitle">📌 Événements à venir</div>          
+            <div id="cal-events-list">
+              <div class="loading">
+                <div class="spinner"></div>EventList...
+              </div>
+            </div>
           </div>
-          <div class="card"><div class="ctitle">📢 Rappels automatiques WhatsApp</div>
-            <div class="crow"><div class="clabel">Rappel aide scolaire (30 Nov)</div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
-            <div class="crow"><div class="clabel">Rappel congés fin d'année</div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
-            <div class="crow"><div class="clabel">Rappel renouvellement MPBP</div><button class="toggle" onclick="this.classList.toggle('on')"></button></div>
-            <div class="crow"><div class="clabel">Rappel déclaration enfants LinkRH</div><button class="toggle" onclick="this.classList.toggle('on')"></button></div>
+          <div class="card" id="t-reminder"><div class="ctitle">📢 Rappels automatiques WhatsApp</div>
+            <div id="cal-reminders-list">
+              <div class="loading">
+                <div class="spinner"></div>Reminder...
+              </div>
+            </div>
           </div>
         </div>
 
@@ -707,7 +517,8 @@
             </div>
           </div>
           <div class="card" id="bpr-detail" style="display:none;"><div class="ctitle" id="bpr-detail-title">Détails BPR</div><div id="bpr-detail-content"></div></div>
-          <div class="card"><div class="ctitle">📊 Messages par BPR ce mois</div>
+          <div class="card">
+            <div class="ctitle">📊 Messages par BPR ce mois</div>
             <div id="carte-agents-bpr" style="text-align:center;padding:16px;color:var(--gray-dark);font-size:13px;">
               <div class="spinner" style="margin:0 auto 8px;"></div>Chargement depuis Google Sheets...
             </div>
@@ -722,8 +533,8 @@
           </div>
           <div class="card">
             <div class="ctitle">❓ Questions sans réponse — À ajouter dans Supabase</div>
-            <div id="q-sans-reponse" style="text-align:center;padding:20px;color:var(--gray-dark);font-size:12px;">
-              📊 Données disponibles après connexion Supabase par Khansa
+            <div id="q-sans-reponse" style="padding:20px;color:var(--gray-dark);font-size:12px;">
+              📊 Données disponibles après connexion Supabase 
             </div>
           </div>
           <div class="card">
@@ -830,7 +641,7 @@
               </div>
             </div>
             <div style="margin-top:12px;padding:10px;background:var(--gold-pale);border-radius:8px;font-size:12px;color:var(--gold-dark);">
-              💡 Les thèmes seront mis à jour automatiquement dès que les conversations sont sauvegardées dans Supabase par Khansa.
+              💡 Les thèmes seront mis à jour automatiquement dès que les conversations sont sauvegardées dans Supabase.
             </div>
           </div>
 
@@ -897,23 +708,23 @@
         <div id="s-notifs" class="section">
           <div class="stitle">🔔 Notifications Push</div>
           <div class="card"><div class="ctitle">⚙️ Configuration</div>
-            <div class="crow"><div class="clabel">🔴 Alertes mots sensibles</div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
-            <div class="crow"><div class="clabel">📢 Nouvelles diffusions</div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
-            <div class="crow"><div class="clabel">📅 Rappels calendrier</div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
-            <div class="crow"><div class="clabel">👥 Nouvel agent inscrit</div><button class="toggle" onclick="this.classList.toggle('on')"></button></div>
-            <div class="crow"><div class="clabel">📋 Mise à jour dossier</div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
-            <div class="crow"><div class="clabel">🤖 Bot hors ligne</div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
+            <div class="crow"><div class="clabel">🔴 Alertes mots sensibles</div><button class="toggle" id="ntog-sensible" onclick="toggleNotif(this,'sensible')"></button></div>
+            <div class="crow"><div class="clabel">📢 Nouvelles diffusions</div><button class="toggle" id="ntog-diffusion" onclick="toggleNotif(this,'diffusion')"></button></div>
+            <div class="crow"><div class="clabel">📅 Rappels calendrier</div><button class="toggle" id="ntog-calendrier" onclick="toggleNotif(this,'calendrier')"></button></div>
+            <div class="crow"><div class="clabel">👥 Nouvel agent inscrit</div><button class="toggle" id="ntog-agent" onclick="toggleNotif(this,'agent')"></button></div>
+            <div class="crow"><div class="clabel">📋 Mise à jour dossier</div><button class="toggle" id="ntog-dossier" onclick="toggleNotif(this,'dossier')"></button></div>
+            <div class="crow"><div class="clabel">🤖 Bot hors ligne</div><button class="toggle" id="ntog-bot" onclick="toggleNotif(this,'bot')"></button></div>
           </div>
           <div class="card"><div class="ctitle">🔔 Notifications récentes</div>
-            <div style="text-align:center;padding:20px;color:var(--gray-dark);font-size:13px;">🔔 Aucune notification pour l'instant</div>
+            <div id="notif-recent-list"><div class="loading"><div class="spinner"></div>Notification...</div></div>
           </div>
           <div class="card"><div class="ctitle">📊 Statistiques</div>
-            <div class="crow"><div class="clabel">Alertes envoyées ce mois</div><div class="cval">0</div></div>
-            <div class="crow"><div class="clabel">Lues</div><div class="cval" style="color:var(--green);">0</div></div>
-            <div class="crow"><div class="clabel">En attente</div><div class="cval" style="color:var(--red);">0</div></div>
-            <div class="crow"><div class="clabel">Taux de lecture</div><div class="cval">—</div></div>
+            <div class="crow"><div class="clabel">Alertes envoyées ce mois</div><div class="cval" id="notif-stat-sent">0</div></div>
+            <div class="crow"><div class="clabel">Lues</div><div class="cval" style="color:var(--green);" id="notif-stat-read">0</div></div>
+            <div class="crow"><div class="clabel">En attente</div><div class="cval" style="color:var(--red);" id="notif-stat-pending">0</div></div>
+            <div class="crow"><div class="clabel">Taux de lecture</div><div class="cval" id="notif-stat-rate">—</div></div>
           </div>
-          <button class="btn gold" onclick="showToast('🔔 Notification test envoyée !','ok')">🔔 Envoyer notification test</button>
+          <button class="btn gold" onclick="sendTestNotification()">🔔 Envoyer notification test</button>
         </div>
 
         <div id="s-habilitations" class="section">
@@ -987,19 +798,67 @@
     </div>
 
     <!-- MODALS -->
-    <div class="moverlay" id="m-agent" onclick="closeModal(event,'m-agent')"><div class="modal"><div class="mhandle"></div><div class="mtitle">➕ Ajouter un agent</div><div class="fg"><label class="fl">📱 Numéro WhatsApp</label><input type="tel" class="fi" id="na-num" placeholder="212XXXXXXXXX"></div><div class="fg"><label class="fl">Nom</label><input type="text" class="fi" id="na-nom" placeholder="Nom de famille"></div><div class="fg"><label class="fl">Prénom</label><input type="text" class="fi" id="na-prenom" placeholder="Prénom"></div><div class="fg"><label class="fl">Agence</label><input type="text" class="fi" id="na-agence" placeholder="Nom de l agence"></div><div class="fg"><label class="fl">Ville</label><input type="text" class="fi" id="na-ville" placeholder="Ex: Tanger"></div><div class="fg"><label class="fl">BPR</label><select class="fs" id="na-bpr"><option>BPR Tanger-Tétouan</option><option>BPR Casablanca BCP</option><option>BPR Rabat-Kénitra</option><option>BPR Fès-Meknès</option><option>BPR Marrakech-Béni Mellal</option><option>BPR Agadir Centre-Sud</option><option>BPR Oujda</option><option>BPR Nador-Al Hoceima</option><option>BPR Laâyoune</option></select></div><button class="btn gold" onclick="addAgent()">✅ Ajouter l'agent</button><button class="btn gray" onclick="closeModalById('m-agent')">Annuler</button></div></div>
-    <div class="moverlay" id="m-user" onclick="closeModal(event,'m-user')"><div class="modal"><div class="mhandle"></div><div class="mtitle">➕ Nouvel utilisateur</div><div class="fg"><label class="fl">Nom complet</label><input type="text" class="fi" id="nu-nom" placeholder="Ex: Ahmed BENNANI"></div><div class="fg"><label class="fl">Mot de passe</label><input type="password" class="fi" id="nu-pwd" placeholder="Choisir un mot de passe fort"></div><div class="fg"><label class="fl">Rôle</label><select class="fs" id="nu-role" onchange="updUF()"><option value="delegue">🏢 Délégué BPR</option><option value="readonly">👁️ Observateur</option></select></div><div class="fg" id="nu-bpr-g"><label class="fl">BPR assignée</label><select class="fs" id="nu-bpr"><option>BPR Tanger-Tétouan</option><option>BPR Casablanca BCP</option><option>BPR Rabat-Kénitra</option><option>BPR Fès-Meknès</option><option>BPR Marrakech-Béni Mellal</option><option>BPR Agadir Centre-Sud</option><option>BPR Oujda</option><option>BPR Nador-Al Hoceima</option><option>BPR Laâyoune</option></select></div><div class="fg"><label class="fl">Permissions</label><div style="background:var(--gray);border-radius:10px;padding:11px;"><div class="habperms" id="nu-perms"></div></div></div><button class="btn gold" onclick="addUser()">✅ Créer l'utilisateur</button><button class="btn gray" onclick="closeModalById('m-user')">Annuler</button></div></div>
-    <div class="moverlay" id="m-dossier" onclick="closeModal(event,'m-dossier')"><div class="modal"><div class="mhandle"></div><div class="mtitle">📋 Nouveau dossier agent</div><div class="fg"><label class="fl">📱 Numéro de l'agent</label><input type="tel" class="fi" placeholder="212XXXXXXXXX"></div><div class="fg"><label class="fl">Type de problème</label><select class="fs"><option>⚖️ Risque licenciement</option><option>⚠️ Conseil de discipline</option><option>📋 Problème MPBP</option><option>🔄 Demande mutation</option><option>💊 Maladie grave</option><option>⚖️ Litige salarial</option><option>Autre</option></select></div><div class="fg"><label class="fl">Priorité</label><select class="fs"><option>🔴 Urgent</option><option>⏳ En cours</option><option>📋 Normal</option></select></div><div class="fg"><label class="fl">Notes</label><textarea class="fta" placeholder="Décrivez la situation et les actions à prendre..."></textarea></div><div class="fg"><label class="fl">Date d'échéance</label><input type="date" class="fi"></div><button class="btn gold" onclick="showToast('✅ Dossier créé !','ok');closeModalById('m-dossier')">✅ Créer le dossier</button><button class="btn gray" onclick="closeModalById('m-dossier')">Annuler</button></div></div>
-    <div class="moverlay" id="m-edit-dossier" onclick="closeModal(event,'m-edit-dossier')"><div class="modal"><div class="mhandle"></div><div class="mtitle">✏️ Modifier le dossier</div><div class="fg"><label class="fl">Statut</label><select class="fs"><option>🔴 Urgent</option><option>⏳ En cours</option><option>✅ Résolu</option></select></div><div class="fg"><label class="fl">Notes de suivi</label><textarea class="fta" placeholder="Mise à jour du dossier..."></textarea></div><button class="btn gold" onclick="showToast('✅ Dossier mis à jour !','ok');closeModalById('m-edit-dossier')">✅ Mettre à jour</button><button class="btn gray" onclick="closeModalById('m-edit-dossier')">Annuler</button></div></div>
-    <div class="moverlay" id="m-event" onclick="closeModal(event,'m-event')"><div class="modal"><div class="mhandle"></div><div class="mtitle">📅 Ajouter un événement</div><div class="fg"><label class="fl">Titre</label><input type="text" class="fi" placeholder="Ex: Réunion délégués SNGBP-CDT"></div><div class="fg"><label class="fl">Date</label><input type="date" class="fi"></div><div class="fg"><label class="fl">Description</label><textarea class="fta" placeholder="Détails de l événement..."></textarea></div><div class="fg"><label class="fl">Rappel WhatsApp automatique</label><select class="fs"><option>3 jours avant</option><option>1 semaine avant</option><option>1 mois avant</option><option>Pas de rappel</option></select></div><button class="btn gold" onclick="showToast('✅ Événement ajouté !','ok');closeModalById('m-event')">✅ Ajouter</button><button class="btn gray" onclick="closeModalById('m-event')">Annuler</button></div></div>
-    <div class="moverlay" id="m-kw" onclick="closeModal(event,'m-kw')"><div class="modal"><div class="mhandle"></div><div class="mtitle">➕ Ajouter un mot clé</div><div class="fg"><label class="fl">Mot clé à surveiller</label><input type="text" class="fi" id="nkw" placeholder="Ex: révocation, mutation forcée..."></div><div class="fg"><label class="fl">Niveau d'alerte</label><select class="fs" id="nkw-level"><option value="urgent">🔴 Urgent — Alerte immédiate</option><option value="warning">⚠️ Attention — Notification</option><option value="info">ℹ️ Info — Statistique uniquement</option></select></div><button class="btn gold" onclick="addKw()">✅ Ajouter</button><button class="btn gray" onclick="closeModalById('m-kw')">Annuler</button></div></div>
-    <div class="toast" id="toast"></div>
-
+    <div class = "moverlay" id = "m-edit-agent" onclick = "closeModal(event,'m-edit-agent')">
+      <div class="modal">
+        <div class="mhandle"></div>
+        <div class="mtitle">✏️ Modifier l'agent</div>
+        <div class="fg">
+          <label class="fl">📱 Numéro</label>
+          <input type="text" class="fi" id="ea-num" readonly style="background:#f5f5f5;color:#888;cursor:not-allowed;">
+        </div>
+        <div class="fg">
+          <label class="fl">👤 Nom complet</label>
+          <input type="text" class="fi" id="ea-nom" placeholder="Nom Prénom">
+        </div>
+        <div class="fg">
+          <label class="fl">🏢 Agence</label>
+          <input type="text" class="fi" id="ea-agence" placeholder="Nom de l'agence">
+        </div>
+        <div class="fg">
+          <label class="fl">🏙️ Ville</label>
+          <input type="text" class="fi" id="ea-ville" placeholder="Ville">
+        </div>
+        <div class="fg">
+          <label class="fl">📍 BPR</label>
+          <select class="fs" id="ea-bpr">
+            <option value="BPR Tanger-Tétouan">BPR Tanger-Tétouan</option>
+            <option value="BPR Casablanca BCP">BPR Casablanca BCP</option>
+            <option value="BPR Rabat-Kénitra">BPR Rabat-Kénitra</option>
+            <option value="BPR Fès-Meknès">BPR Fès-Meknès</option>
+            <option value="BPR Marrakech-Béni Mellal">BPR Marrakech-Béni Mellal</option>
+            <option value="BPR Agadir Centre-Sud">BPR Agadir Centre-Sud</option>
+            <option value="BPR Oujda">BPR Oujda</option>
+            <option value="BPR Nador-Al Hoceima">BPR Nador-Al Hoceima</option>
+            <option value="BPR Laâyoune">BPR Laâyoune</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="fl">✅ Statut</label>
+          <select class="fs" id="ea-statut">
+            <option value="Actif">✅ Actif</option>
+            <option value="Inactif">🔴 Inactif</option>
+          </select>
+        </div>
+        <button class="btn gold" onclick="updateAgent()">💾 Enregistrer les modifications</button>
+        <button class="btn gray" onclick="closeModalById('m-edit-agent')">Annuler</button>
+      </div>
+    </div>
+    <div class = "moverlay" id = "m-agent"        onclick = "closeModal(event,'m-agent')"><div class="modal"><div class="mhandle"></div><div class="mtitle">➕ Ajouter un agent</div><div class="fg"><label class="fl">📱 Numéro WhatsApp</label><input type="tel" class="fi" id="na-num" placeholder="212XXXXXXXXX"></div><div class="fg"><label class="fl">Nom</label><input type="text" class="fi" id="na-nom" placeholder="Nom de famille"></div><div class="fg"><label class="fl">Prénom</label><input type="text" class="fi" id="na-prenom" placeholder="Prénom"></div><div class="fg"><label class="fl">Agence</label><input type="text" class="fi" id="na-agence" placeholder="Nom de l agence"></div><div class="fg"><label class="fl">Ville</label><input type="text" class="fi" id="na-ville" placeholder="Ex: Tanger"></div><div class="fg"><label class="fl">BPR</label><select class="fs" id="na-bpr"><option>BPR Tanger-Tétouan</option><option>BPR Casablanca BCP</option><option>BPR Rabat-Kénitra</option><option>BPR Fès-Meknès</option><option>BPR Marrakech-Béni Mellal</option><option>BPR Agadir Centre-Sud</option><option>BPR Oujda</option><option>BPR Nador-Al Hoceima</option><option>BPR Laâyoune</option></select></div><button class="btn gold" onclick="addAgent()">✅ Ajouter l'agent</button><button class="btn gray" onclick="closeModalById('m-agent')">Annuler</button></div></div>
+    <div class = "moverlay" id = "m-user"         onclick = "closeModal(event,'m-user')"><div class="modal"><div class="mhandle"></div><div class="mtitle">➕ Nouvel utilisateur</div><div class="fg"><label class="fl">Nom complet</label><input type="text" class="fi" id="nu-nom" placeholder="Ex: Ahmed BENNANI"></div><div class="fg"><label class="fl">Mot de passe</label><input type="password" class="fi" id="nu-pwd" placeholder="Choisir un mot de passe fort"></div><div class="fg"><label class="fl">Rôle</label><select class="fs" id="nu-role" onchange="updUF()"><option value="delegue">🏢 Délégué BPR</option><option value="readonly">👁️ Observateur</option></select></div><div class="fg" id="nu-bpr-g"><label class="fl">BPR assignée</label><select class="fs" id="nu-bpr"><option>BPR Tanger-Tétouan</option><option>BPR Casablanca BCP</option><option>BPR Rabat-Kénitra</option><option>BPR Fès-Meknès</option><option>BPR Marrakech-Béni Mellal</option><option>BPR Agadir Centre-Sud</option><option>BPR Oujda</option><option>BPR Nador-Al Hoceima</option><option>BPR Laâyoune</option></select></div><div class="fg"><label class="fl">Permissions</label><div style="background:var(--gray);border-radius:10px;padding:11px;"><div class="habperms" id="nu-perms"></div></div></div><button class="btn gold" onclick="addUser()">✅ Créer l'utilisateur</button><button class="btn gray" onclick="closeModalById('m-user')">Annuler</button></div></div>
+    <div class = "moverlay" id = "m-dossier"      onclick = "closeModal(event,'m-dossier')"><div class="modal"><div class="mhandle"></div><div class="mtitle">📋 Nouveau dossier agent</div><div class="fg"><label class="fl">📱 Numéro de l'agent</label><input type="tel" class="fi" placeholder="212XXXXXXXXX"></div><div class="fg"><label class="fl">Type de problème</label><select class="fs"><option>⚖️ Risque licenciement</option><option>⚠️ Conseil de discipline</option><option>📋 Problème MPBP</option><option>🔄 Demande mutation</option><option>💊 Maladie grave</option><option>⚖️ Litige salarial</option><option>Autre</option></select></div><div class="fg"><label class="fl">Priorité</label><select class="fs"><option>🔴 Urgent</option><option>⏳ En cours</option><option>📋 Normal</option></select></div><div class="fg"><label class="fl">Notes</label><textarea class="fta" placeholder="Décrivez la situation et les actions à prendre..."></textarea></div><div class="fg"><label class="fl">Date d'échéance</label><input type="date" class="fi"></div><button class="btn gold" onclick="showToast('✅ Dossier créé !','ok');closeModalById('m-dossier')">✅ Créer le dossier</button><button class="btn gray" onclick="closeModalById('m-dossier')">Annuler</button></div></div>
+    <div class = "moverlay" id = "m-edit-dossier" onclick = "closeModal(event,'m-edit-dossier')"><div class="modal"><div class="mhandle"></div><div class="mtitle">✏️ Modifier le dossier</div><div class="fg"><label class="fl">Statut</label><select class="fs"><option>🔴 Urgent</option><option>⏳ En cours</option><option>✅ Résolu</option></select></div><div class="fg"><label class="fl">Notes de suivi</label><textarea class="fta" placeholder="Mise à jour du dossier..."></textarea></div><button class="btn gold" onclick="showToast('✅ Dossier mis à jour !','ok');closeModalById('m-edit-dossier')">✅ Mettre à jour</button><button class="btn gray" onclick="closeModalById('m-edit-dossier')">Annuler</button></div></div>
+    <div class = "moverlay" id = "m-event"        onclick = "closeModal(event,'m-event')"><div class="modal"><div class="mhandle"></div><div class="mtitle">📅 Ajouter un événement</div><div class="fg"><label class="fl">Titre</label><input type="text" class="fi" id="ev-titre" placeholder="Ex: Réunion délégués SNGBP-CDT"></div><div class="fg"><label class="fl">Date</label><input type="date" class="fi" id="ev-date"></div><div class="fg"><label class="fl">Description</label><textarea class="fta" id="ev-desc" placeholder="Détails de l événement..."></textarea></div><div class="fg"><label class="fl">Rappel WhatsApp automatique</label><select class="fs" id="ev-rappel"><option value="3j">3 jours avant</option><option value="1s">1 semaine avant</option><option value="1m">1 mois avant</option><option value="non">Pas de rappel</option></select></div><button class="btn gold" onclick="saveEvent()">✅ Ajouter</button><button class="btn gray" onclick="closeModalById('m-event')">Annuler</button></div></div>
+    <div class = "moverlay" id = "m-kw"           onclick = "closeModal(event,'m-kw')"><div class="modal"><div class="mhandle"></div><div class="mtitle">➕ Ajouter un mot clé</div><div class="fg"><label class="fl">Mot clé à surveiller</label><input type="text" class="fi" id="nkw" placeholder="Ex: révocation, mutation forcée..."></div><div class="fg"><label class="fl">Niveau d'alerte</label><select class="fs" id="nkw-level"><option value="urgent">🔴 Urgent — Alerte immédiate</option><option value="warning">⚠️ Attention — Notification</option><option value="info">ℹ️ Info — Statistique uniquement</option></select></div><button class="btn gold" onclick="addKeyword()">✅ Ajouter</button><button class="btn gray" onclick="closeModalById('m-kw')">Annuler</button></div></div>
+    <div class = "toast"    id = "toast"></div>
+ 
     <script>
-      const BROADCAST_WEBHOOK = "https://hook.eu1.make.com/wkw7re6u66jexxg5nr7p18xhbmvtwn21";
       const SUPABASE_URL      = "https://zszavgpjkrcubzxkoudw.supabase.co";
       const SHEET_ID          = '16d56BoCPy1WE0lsJIJ56zjxy8Hn3b0KJNpOczTflvRU';
       const GS_BASE           = `https://docs.google.com/spreadsheets/d/${SHEET_ID}`;
+      const BROADCAST_WEBHOOK = "https://hook.eu1.make.com/wkw7re6u66jexxg5nr7p18xhbmvtwn21";
+      const AGENT_WEBHOOK     = "https://hook.eu1.make.com/tnw354s5mj4k8uexjusfohg8lexnpjxl";
+      const NOTIFI_WEBHOOKS   = "https://hook.eu1.make.com/a58638e4ch1rcbmgwp9s6pfjfz95ijrp";
+      const CALENDAR_WEBHOOK  = "https://hook.eu1.make.com/y2dhil7kvj1luffpec4gkqy3s3kyyb7e";
      
       async function gsRead(sheet, skipRows = 3) {
         try {
@@ -1038,94 +897,101 @@
         result.push(cur);
         return result;
       }
-      const SUPA_ANON='';
-      let KEY='',CU=null;
+      const SUPA_ANON = '';
+      let KEY = '', CU = null;
       const USERS_DATA = [
-        {nom:'Administrateur SNGBP-CDT',pwd:'CDT2026',role:'admin',bpr:'all'}
+        {
+          nom:'Administrateur SNGBP-CDT',
+          pwd:'CDT2026',
+          role:'admin',
+          bpr:'all'
+        }
       ];
-      function loadUsers(){
-        const extra=JSON.parse(localStorage.getItem('sngbp_users')||'[]');
-        const base=USERS_DATA.filter(u=>u.role==='admin');
-        const nonAdmin=USERS_DATA.filter(u=>u.role!=='admin');
-        const allExtra=[...nonAdmin,...extra.filter(function(e){return !nonAdmin.find(function(n){return n.pwd===e.pwd;});})];
+      
+      function loadUsers() {
+        const extra    = JSON.parse(localStorage.getItem('sngbp_users') || '[]');
+        const base     = USERS_DATA.filter(u => u.role === 'admin');
+        const nonAdmin = USERS_DATA.filter(u => u.role !== 'admin');
+        const allExtra = [...nonAdmin, ...extra.filter(function(e) {return !nonAdmin.find(function(n){return n.pwd === e.pwd;});})];
         return [...base,...allExtra];
       }
+
       function saveUsers(){
-        const extra=users.filter(function(u){return u.role!=='admin';});
+        const extra = users.filter(function(u){return u.role!=='admin';});
         try{localStorage.setItem('sngbp_users',JSON.stringify(extra));}catch(e){}
       }
-      let users=loadUsers();
-      const PERMS={
-        admin:{dashboard:1,agents:1,diffusion:1,conversations:1,alertes:1,dossiers:1,calendrier:1,carte:1,qualite:1,rapports:1,notifs:1,habilitations:1,audit:1,config:1,bpr:'all'},
-        delegue:{dashboard:1,agents:1,diffusion:0,conversations:0,alertes:1,dossiers:1,calendrier:1,carte:1,qualite:0,rapports:0,notifs:1,habilitations:0,audit:0,config:0,bpr:'specific'},
+
+      const PERMS = {
+        admin   :{dashboard:1,agents:1,diffusion:1,conversations:1,alertes:1,dossiers:1,calendrier:1,carte:1,qualite:1,rapports:1,notifs:1,habilitations:1,audit:1,config:1,bpr:'all'},
+        delegue :{dashboard:1,agents:1,diffusion:0,conversations:0,alertes:1,dossiers:1,calendrier:1,carte:1,qualite:0,rapports:0,notifs:1,habilitations:0,audit:0,config:0,bpr:'specific'},
         readonly:{dashboard:1,agents:0,diffusion:0,conversations:0,alertes:0,dossiers:0,calendrier:1,carte:1,qualite:0,rapports:1,notifs:0,habilitations:0,audit:0,config:0,bpr:'all'}
       };
-      const RL={admin:'👑 Admin',delegue:'🏢 Délégué',readonly:'👁️ Lecture'};
-      const TABS=['agents','diffusion','conversations','alertes','dossiers','calendrier','carte','qualite','rapports','notifs','habilitations','audit','config'];
+      const RL = {admin:'👑 Admin',delegue:'🏢 Délégué',readonly:'👁️ Lecture'};
+      const TABS = ['agents', 'diffusion', 'conversations', 'alertes', 'dossiers', 'calendrier', 'carte', 'qualite', 'rapports', 'notifs', 'habilitations', 'audit', 'config'];
 
-      function switchLoginTab(tab){
-        if(tab==='simple'){
-          document.getElementById('login-simple').style.display='block';
-          document.getElementById('login-admin').style.display='none';
-          document.getElementById('tab-simple').style.background='var(--gold)';
-          document.getElementById('tab-simple').style.color='white';
-          document.getElementById('tab-admin').style.background='var(--gray)';
-          document.getElementById('tab-admin').style.color='var(--gray-dark)';
-        } else {
-          document.getElementById('login-simple').style.display='none';
-          document.getElementById('login-admin').style.display='block';
-          document.getElementById('tab-admin').style.background='var(--gold)';
-          document.getElementById('tab-admin').style.color='white';
-          document.getElementById('tab-simple').style.background='var(--gray)';
-          document.getElementById('tab-simple').style.color='var(--gray-dark)';
-        }
-      }
-
-      function switchTab(tab){
-        const isSimple = tab==='simple';
-        document.getElementById('form-simple').style.display = isSimple?'block':'none';
-        document.getElementById('form-admin').style.display = isSimple?'none':'block';
+      function switchTab(tab) {
+        const isSimple = tab === 'simple';
+        document.getElementById('form-simple').style.display   = isSimple?'block':'none';
+        document.getElementById('form-admin').style.display    = isSimple?'none':'block';
         document.getElementById('tab-simple').style.background = isSimple?'var(--gold)':'var(--gray)';
-        document.getElementById('tab-simple').style.color = isSimple?'white':'var(--gray-dark)';
-        document.getElementById('tab-admin').style.background = isSimple?'var(--gray)':'var(--gold)';
-        document.getElementById('tab-admin').style.color = isSimple?'var(--gray-dark)':'white';
+        document.getElementById('tab-simple').style.color      = isSimple?'white':'var(--gray-dark)';
+        document.getElementById('tab-admin').style.background  = isSimple?'var(--gray)':'var(--gold)';
+        document.getElementById('tab-admin').style.color       = isSimple?'var(--gray-dark)':'white';
       }
 
-      function doLoginSimple(){
-        users=loadUsers();
-        const p=document.getElementById('login-pwd-simple').value.trim();
-        if(!p){showToast('❌ Entrez votre mot de passe !','err');return;}
-        const u=users.find(x=>x.pwd===p);
-        if(!u){showToast('❌ Mot de passe incorrect !','err');return;}
-        if(u.role==='admin'){showToast('❌ Utilisez l\'onglet Administrateur','err');return;}
-        KEY=window._sharedKey||localStorage.getItem('sngbp_key')||'';
+      function doLoginSimple() {
+        users = loadUsers();
+        const password = document.getElementById('login-pwd-simple').value.trim();
+        if(!password) {showToast('❌ Entrez votre mot de passe !','err'); return;}
+
+        const u = users.find(x => x.pwd === password);
+        if(!u) {showToast('❌ Mot de passe incorrect !','err'); return;}
+
+        if(u.role === 'admin') {showToast('❌ Utilisez l\'onglet Administrateur','err'); return;}
+        KEY = window._sharedKey || localStorage.getItem('sngbp_key')||'';
+
         if(!KEY){
           showToast('❌ Contactez l\'administrateur pour activer votre accès','err');
           return;
         }
-        CU=u;
-        document.getElementById('login-screen').style.display='none';
-        document.getElementById('app').style.display='block';
-        document.getElementById('huser').textContent=u.nom;
-        document.getElementById('hrole').textContent=RL[u.role];
-        TABS.forEach(s=>{const t=document.getElementById('t-'+s);if(t)t.classList.toggle('hidden',!PERMS[u.role][s]);});
-        loadDash();
-        showToast('✅ Bienvenue '+u.nom+' !','ok');
-      }
-
-      function doLogin(){
-        users = loadUsers();
-        const k = document.getElementById('login-key').value.trim();
-        const p = document.getElementById('login-pwd').value.trim();
-        if (!k) {showToast('❌ Entrez la clé Supabase !','err'); return;}
-        const u = users.find(x => x.pwd === p);
-        if (!u) {showToast('❌ Mot de passe incorrect !','err'); return;}
-        KEY = k; window._adminKey = k; window._sharedKey = k; try{localStorage.setItem('sngbp_key',k);}catch(e){} CU = u;
+        CU = u;
         document.getElementById('login-screen').style.display = 'none';
         document.getElementById('app').style.display = 'block';
         document.getElementById('huser').textContent = u.nom;
         document.getElementById('hrole').textContent = RL[u.role];
-        TABS.forEach(s=>{const t=document.getElementById('t-'+s);if(t)t.classList.toggle('hidden',!PERMS[u.role][s]);});
+        TABS.forEach(s => {
+          const t = document.getElementById('t-'+s); 
+          if(t) t.classList.toggle('hidden', !PERMS[u.role][s]);
+        });
+
+        document.getElementById('t-reminder').style.display = 'none';
+
+        loadDash();
+        showToast('✅ Bienvenue '+u.nom+' !','ok');
+      }
+
+      function doLoginAdmin() {
+        users = loadUsers();
+        const k = document.getElementById('login-key').value.trim();
+        const p = document.getElementById('login-pwd-admin').value.trim();
+        if (!k) {showToast('❌ Entrez la clé Supabase !','err'); return;}
+        const u = users.find(x => x.pwd === p);
+        if (!u) {showToast('❌ Mot de passe incorrect !','err'); return;}
+        KEY = k; 
+        window._adminKey  = k; 
+        window._sharedKey = k; 
+        try{
+          localStorage.setItem('sngbp_key', k);
+        } catch(e) {} 
+        CU = u;
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+        document.getElementById('huser').textContent = u.nom;
+        document.getElementById('hrole').textContent = RL[u.role];
+        TABS.forEach(s => {
+          const t = document.getElementById('t-'+s); 
+          if(t) t.classList.toggle('hidden', !PERMS[u.role][s]);
+        });
         loadDash();
         showToast('✅ Bienvenue '+u.nom+' !','ok');
       }
@@ -1136,7 +1002,7 @@
         document.getElementById('login-screen').style.display='flex';
         document.getElementById('app').style.display='none';
         document.getElementById('login-key').value='';
-        document.getElementById('login-pwd').value='';
+        document.getElementById('login-pwd-admin').value='';
         document.getElementById('login-pwd-simple').value='';
       }
 
@@ -1150,33 +1016,57 @@
         if (name === 'diffusion')     loadBroadcastLog();
         if (name === 'conversations') loadConversations();
         if (name === 'alertes')       loadAlerts();
+        if (name === 'calendrier')    loadCalendrier();
+        if (name === 'carte')         loadCarte();
         if (name === 'config')        loadConfig();
         if (name === 'rapports')      loadRapports();
-        if (name === 'carte')         loadCarte();
+        if (name === 'notifs')        loadNotifs();
+        if (name === 'qualite')       loadQualite();
       }
 
       async function api(t, p = '') {
         try {
-          const r = await fetch(SUPABASE_URL + '/rest/v1/' + t + '?' + p, {headers:{'apikey':KEY, 'Authorization':'Bearer ' + KEY}});
-          return r.ok ? r.json() : [];
+          const response = await fetch(SUPABASE_URL + '/rest/v1/' + t + '?' + p, {
+            headers:{
+              'apikey':KEY, 
+              'Authorization':'Bearer ' + KEY
+            }});
+          return response.ok ? response.json() : [];
         } catch(e) {return[];}
       }
-      async function apiPost(t,d){
+      
+      async function apiPost(t, d) {
         try{
-          const r=await fetch(SUPABASE_URL + '/rest/v1/'+t,{method:'POST',headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(d)});
-          return r.ok;
-        }catch(e){return false;}
+          const response = await fetch(SUPABASE_URL + '/rest/v1/' + t, {
+              method : 'POST',
+              headers: {
+                'apikey':KEY,
+                'Authorization':'Bearer '+KEY,
+                'Content-Type':'application/json',
+                'Prefer':'return=minimal'},
+              body   : JSON.stringify(d)
+            });
+          return await response.json();
+        } catch(e) {return '';}
       }
-      async function apiPatch(t,f,d){
-        try{
-          const r=await fetch(SUPABASE_URL + '/rest/v1/'+t+'?'+f,{method:'PATCH',headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(d)});
-          return r.ok;
-        }catch(e){return false;}
+      
+      async function apiPatch(t, f, d) {
+        try {
+          const response = await fetch(SUPABASE_URL + '/rest/v1/' + t + '?' + f, {
+            method:'PATCH',
+            headers:{
+              'apikey':KEY,
+              'Authorization':'Bearer ' + KEY,
+              'Content-Type':'application/json','Prefer':'return=minimal'
+            },
+            body:JSON.stringify(d)});
+          return response.ok;
+        } catch(e) {return false;}
       }
 
       async function loadDash() {
         try{
-          const data = await gsRead('MASTER', 2);
+          const data = await gsRead('MASTER', 0);
           if(data){
             const vrais=data.filter(function(r){return r['NUMÉRO']&&!r['NUMÉRO'].includes('X');});
             const actifs=vrais.filter(function(r){return r['STATUT']==='Actif';});
@@ -1194,8 +1084,8 @@
           if(document.getElementById('perf-today'))document.getElementById('perf-today').textContent=todayCount;
 
           // Barres activité 7 jours
-          const days7={};
-          const jours=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+          const days7 = {};
+          const jours = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
           for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days7[d.toISOString().split('T')[0]]=0;}
           c.forEach(function(conv){const k=(conv.created_at||'').substring(0,10);if(days7[k]!==undefined)days7[k]++;});
           const vals7=Object.values(days7);
@@ -1291,35 +1181,84 @@
           const bpr    = a['BPR'] || '—';
           const agence = a['AGENCE'] || '—';
           const statut = a['STATUT'] || '—';
-          const cls = statut === 'Actif' ? 'bg-green' : 'bg-red';
-          return '<div class="aitem">' +
-            '<div class="ainfo">' +
-              '<div class="aname">' + (nom || num) + '</div>' +
-              '<div class="adetail">📱 ' + num + ' | 🏢 ' + agence + ' | 🏙️ ' + ville + '</div>' +
-              '<div class="adetail">📍 ' + bpr + '</div>' + 
-            '</div>'+
-            '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;">'+
-              '<span class="badge ' + cls + '">' + statut + '</span>' +
-            '</div>'+
-          '</div>';
+          const cls    = statut === 'Actif' ? 'bg-green' : 'bg-red';
+          const btnLbl = statut === 'Actif' ? '✅ Actif' : '🔴 Inactif';
+          const safeNum    = num.replace(/'/g,"\\'");
+          const safeNom    = nom.replace(/'/g,"\\'");
+          const safeAgence = agence.replace(/'/g,"\\'");
+          const safeVille  = ville.replace(/'/g,"\\'");
+          const safeBpr    = bpr.replace(/'/g,"\\'");
+          const safeStat   = statut.replace(/'/g,"\\'");
+          return (
+            '<div class="aitem bpritem" style="cursor:pointer;transition:background 0.15s;" '+
+              'onmouseenter="this.style.background=\'var(--gold-pale)\'" '+
+              'onmouseleave="this.style.background=\'\'" '+
+              'onclick="openEditAgent(\''+safeNum+'\',\''+safeNom+'\',\''+safeAgence+'\',\''+safeVille+'\',\''+safeBpr+'\',\''+safeStat+'\')">' +
+             
+              '<div class="ainfo">' +
+                '<div class="aname">' + (nom || num) + '</div>' +
+                '<div class="adetail">📱 ' + num + ' | 🏢 ' + agence + ' | 🏙️ ' + ville + '</div>' +
+                '<div class="adetail">📍 ' + bpr + '</div>' + 
+              '</div>'+
+
+              '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;" onclick="event.stopPropagation()">' +
+
+                /* Toggle Actif / Inactif button */
+                '<button class = "agent-badge ' + cls + '" onclick="toggleAgentGS(\''+safeNum+'\',\''+safeStat+'\')" '+
+                  'style="cursor:pointer;font-family:Cairo,sans-serif;font-weight:700;white-space:nowrap;">'+
+                  btnLbl +
+                '</button>' +
+
+                /* Delete button */
+                '<button class = "agent-badge bg-red" onclick="removeAgentGS(\''+safeNum+'\',\''+safeNom+'\')" '+
+                  'style="cursor:pointer;font-family:Cairo,sans-serif;font-weight:700;">'+
+                  '🗑️ Supprimer' +
+                '</button>' +
+
+              '</div>' +
+            '</div>'
+          );
         }).join('');
       }
 
-      function renderAgents(a,el){
-        el.innerHTML=a.map(function(x){
-          const nom=(x.nom||'')+' '+(x.prenom||'');
-          const det='📱 '+(x.numero||'—')+' | 🏙️ '+(x.ville||'—')+' | 🏢 '+(x.bpr||'—');
-          const cls=x.statut==='Actif'?'bg-green':'bg-red';
-          const lbl=x.statut==='Actif'?'Désactiver':'Activer';
-          const num=x.numero||'';
-          const stat=x.statut||'';
-          return '<div class="aitem">'+
-            '<div class="ainfo"><div class="aname">'+nom+'</div><div class="adetail">'+det+'</div></div>'+
-            '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;">'+
-            '<span class="badge '+cls+'">'+stat+'</span>'+
-            '<button data-num="'+num+'" data-stat="'+stat+'" onclick="toggleAgent(this.dataset.num,this.dataset.stat)" style="font-size:11px;padding:3px 9px;border:none;border-radius:7px;cursor:pointer;background:var(--gray);color:var(--dark);font-family:Cairo,sans-serif;">'+lbl+'</button>'+
-            '</div></div>';
-        }).join('');
+      // Toggle Actif ↔ Inactif via Make webhook
+      async function toggleAgentGS(num, currentStatut) {
+        const newStatut = currentStatut === 'Actif' ? 'Inactif' : 'Actif';
+        showToast('⏳ Mise à jour...', '');
+
+        const result = await apiMake(AGENT_WEBHOOK, {
+          numéro: num,
+          statut: newStatut,
+          method: 'toggle'
+        });
+
+        if (result) {
+          showToast('✅ Statut changé : ' + newStatut, 'ok');
+          loadAgents();
+        } else {
+          showToast('❌ Erreur de connexion', 'err'); return;
+        }
+
+        loadAgents();
+      }
+
+      // Delete agent via Make webhook
+      async function removeAgentGS(num, nom) {
+        if (!confirm('Supprimer définitivement ' + nom + ' (' + num + ') ?')) return;
+        showToast('⏳ Suppression...', '');
+
+        const result = await apiMake(AGENT_WEBHOOK, {
+          numéro: num,
+          method: 'remove'
+        });
+
+        if (result) {
+          showToast('✅ Agent supprimé !', 'ok');
+        } else {
+          showToast('❌ Erreur de connexion', 'err'); return;
+        }
+
+        loadAgents();
       }
 
       async function searchAgents(){
@@ -1347,27 +1286,94 @@
         renderAgentsGS(agents, el);
       }
 
-      async function toggleAgent(num,s){
-        const ns=s==='Actif'?'Inactif':'Actif';
-        const ok=await apiPatch('agents_whatsapp','numero=eq.'+num,{statut:ns});
-        if(ok){showToast('✅ Agent '+(ns==='Actif'?'activé':'désactivé')+' !','ok');loadAgents();}
-        else showToast('❌ Erreur','err');
+      async function addAgent(){
+        const payload = {
+          numéro: document.getElementById('na-num').value.trim(),
+          nom:    document.getElementById('na-nom').value.trim(),
+          prenom: document.getElementById('na-prenom').value.trim(),
+          agence: document.getElementById('na-agence').value.trim(),
+          ville:  document.getElementById('na-ville').value.trim(),
+          bpr:    document.getElementById('na-bpr').value,
+          statut: 'Actif'
+        };
+        
+        payload.method = 'add';
+
+        if(!payload.numéro || !payload.nom) {
+          showToast('❌ Numéro et Nom requis!', 'err'); 
+          return;
+        }
+
+        // Validate number format
+        if (!payload.numéro.startsWith('212') || payload.numéro.length < 12) {
+          showToast('❌ Format: 212XXXXXXXXX', 'err');
+          return;
+        }
+        
+        showToast('⏳ Ajout en cours...', '');
+
+        const result = await apiMake(AGENT_WEBHOOK, payload);
+
+        if (result) {
+          showToast('✅ Agent ajouté avec succès!', 'ok');          
+        } else {
+          showToast('❌ Erreur de connexion', 'err'); return;
+        }
+
+        closeModalById('m-agent');
+        loadAgents();
+        addNotifEntry( '👥 New agent registered: ' + payload.prenom+ ' ' + payload.nom, 'agent'); 
       }
 
-      async function addAgent(){
-        const d={
-          numero:document.getElementById('na-num').value.trim(),
-          nom:document.getElementById('na-nom').value.trim(),
-          prenom:document.getElementById('na-prenom').value.trim(),
-          agence:document.getElementById('na-agence').value.trim(),
-          ville:document.getElementById('na-ville').value.trim(),
-          bpr:document.getElementById('na-bpr').value,
-          statut:'Actif'
+      /* ── Open Edit Agent Modal ── */
+      function openEditAgent(num, nom, agence, ville, bpr, statut) {
+        document.getElementById('ea-num').value    = num;
+        document.getElementById('ea-nom').value    = nom;
+        document.getElementById('ea-agence').value = agence;
+        document.getElementById('ea-ville').value  = ville;
+        const bprSel = document.getElementById('ea-bpr');
+        for(let i = 0; i < bprSel.options.length; i++){
+          if(bprSel.options[i].value === bpr || bprSel.options[i].text === bpr) {
+            bprSel.selectedIndex = i; break;
+          }
+        }
+        const statSel = document.getElementById('ea-statut');
+        for(let i = 0; i < statSel.options.length; i++) {
+          if (statSel.options[i].value === statut) {
+            statSel.selectedIndex = i;
+            break;
+          }
+        }
+        openModal('m-edit-agent');
+      }
+
+      /* ── Save Edit Agent via Make webhook ── */
+      async function updateAgent() {
+        const payload = {
+          numéro: document.getElementById('ea-num').value.trim(),
+          nom:    document.getElementById('ea-nom').value.trim(),
+          agence: document.getElementById('ea-agence').value.trim(),
+          ville:  document.getElementById('ea-ville').value.trim(),
+          bpr:    document.getElementById('ea-bpr').value,
+          statut: document.getElementById('ea-statut').value
         };
-        if(!d.numero){showToast('❌ Numéro obligatoire !','err');return;}
-        const ok=await apiPost('agents_whatsapp',d);
-        if(ok){showToast('✅ Agent ajouté !','ok');closeModalById('m-agent');loadAgents();}
-        else showToast('❌ Erreur ajout','err');
+     
+        payload.method = 'update';
+
+        if(!payload.numéro) {showToast('❌ Numéro manquant','err'); return;}
+
+        showToast('⏳ Sauvegarde...', '');
+
+        const result = await apiMake(AGENT_WEBHOOK, payload);
+
+        if (result) {
+          showToast('✅ Agent mis à jour !', 'ok');
+        } else {
+          showToast('❌ Erreur de connexion', 'err'); return;
+        }
+        
+        closeModalById('m-edit-agent');
+        loadAgents();
       }
 
       function updDiff(){
@@ -1375,6 +1381,7 @@
         document.getElementById('diff-bpr-g').style.display   = t === 'bpr'   ? 'block' : 'none';
         document.getElementById('diff-ville-g').style.display = t === 'ville' ? 'block' : 'none';
       }
+      
       function prevDiff(){
         const m=document.getElementById('diff-msg').value;
         const t=document.getElementById('diff-type').value;
@@ -1383,6 +1390,7 @@
         document.getElementById('diff-preview-text').textContent=dest+'\n\n'+m;
         document.getElementById('diff-preview').style.display='block';
       }
+      
       async function sendBroadcast() {
         const message = document.getElementById('diff-msg').value;
 
@@ -1390,31 +1398,28 @@
         showToast('📤 Diffusion lancée via Make.com !','ok');
                 
         const type = document.getElementById('diff-type').value;
-        let data = { type, message};
+        let payload = { type, message};
         if (type === 'bpr') {
-            data.bpr = document.getElementById('diff-bpr').value;
-            if (!data.bpr) {
+            payload.bpr = document.getElementById('diff-bpr').value;
+            if (!payload.bpr) {
                 showToast('❌ Please select BPR region!', 'err'); 
                 return;
             }
         }
         if (type === 'ville') {
-            data.city = document.getElementById('diff-ville').value;
-            if (!data.city) {
+            payload.city = document.getElementById('diff-ville').value;
+            if (!payload.city) {
               showToast('❌ Please select a city!', 'err'); 
               return;
             }
         }
-        try {
-          showToast('⏳ Sending broadcast...', 'ok');
-          const broadcastResponse = await fetch(BROADCAST_WEBHOOK, {
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify(data)
-          });
+        showToast('⏳ Sending broadcast...', 'ok');
+        const result = await apiMake(BROADCAST_WEBHOOK, payload);
+
+        if (result) {
           showToast('✅ Broadcast sent successfully!', 'ok');
-        } catch (e) {
-          showToast('❌ Error. Try again.', 'err'); 
+        } else {
+          showToast('❌ Error connecting to Make.com', 'err'); return;
         }
       }
 
@@ -1448,8 +1453,12 @@
         `).join('');
       }
      
+
+      // ─── CONVERSATIONS ─────────────────────────────────────────────────────
       async function loadConversations(keyWord) {
         keyWord = keyWord || '';
+
+        renderConvKeywords();
         const container = document.getElementById('conv-list');
         container.innerHTML = '<div class="loading"><div class="spinner"></div>Chargement...</div>';
         try {
@@ -1468,189 +1477,50 @@
           }).join('');
         } catch(e){container.innerHTML='<div class="loading">ℹ️ Table conversations non encore créée dans Supabase</div>';}
       }
+      
       function searchConvs() {loadConversations(document.getElementById('conv-q').value);}
+      
       function fconv(keyWord) {document.getElementById('conv-q').value = keyWord; loadConversations(keyWord);}
 
-
-
-      // Default monitored keywords
-      // let keywords = [
-      //   { word: "dismissal", type: "urgent" },
-      //   { word: "harassment", type: "urgent" },
-      //   { word: "revocation", type: "urgent" },
-      //   { word: "court", type: "urgent" },
-      //   { word: "lawyer", type: "urgent" },
-      //   { word: "discipline", type: "urgent" },
-      //   { word: "sanction", type: "warning" },
-      //   { word: "injustice", type: "warning" },
-      //   { word: "blame", type: "warning" },
-      //   { word: "forced mutation", type: "warning" },
-      //   { word: "resignation", type: "warning" },
-      //   { word: "availability", type: "warning" }
-      // ];
-
-      // Load alerts from Supabase
-      // async function loadAlerts() {
-
-      //     // Render keywords
-      //     renderKeywords();
-
-      //     // Scan for keywords
-      //     scanKeywords(conversations);
-
-      //   } catch(error) {
-      //     console.error('Alert error:', error);
-      //   }
-      // }
- 
-      
-
-      // Scan conversations for keywords
-      function scanKeywords(conversations) {
+      // Render keyword badges
+      function renderConvKeywords() {
+        const container = document.getElementById('conv-kw-list');
         
-        // Show stats bars
-        renderStatsBars(counts);
-      }
-
-      
-      // Render stats bars
-      function renderStatsBars(counts) {
-        const container = document.getElementById('statsAlerts');
-        
-        const maxCount = Math.max(
-          ...Object.values(counts), 1
-        );
-
-        container.innerHTML = keywords
-        .map(k => `
-          <div class="stat-bar-row">
-            <div class="stat-bar-label">
-              ${k.type === 'urgent' ? 
-              '🔴' : '⚠️'} ${k.word}
-            </div>
-            <div class="stat-bar-container">
-              <div class="stat-bar-fill"
-              style="width: ${
-                (counts[k.word] / maxCount) 
-                * 100
-              }%">
-              </div>
-            </div>
-            <div class="stat-bar-count">
-              ${counts[k.word]}
-            </div>
-          </div>
+        container.innerHTML = alertKeywords.map(k => `
+          <span 
+            class="ktag ${k.type}" onclick="fconv('${k.word}')">${k.word}
+          </span>
         `).join('');
       }
+      // ─── END CONVERSATIONS ─────────────────────────────────────────────────
 
-      
 
-   
+      // ─── ALERTS ────────────────────────────────────────────────────────────
       // Keywords matching client's existing code
-      const alertKeywords = [
-        // Urgent (red) keywords
-        { 
-          word: "licenciement", 
-          type: "urgent",
-          barId: "bar-al1",
-          statId: "al-stat1"
-        },
-        { 
-          word: "discipline", 
-          type: "urgent",
-          barId: "bar-al2",
-          statId: "al-stat2"
-        },
-        { 
-          word: "harcèlement", 
-          type: "urgent",
-          barId: "bar-al3",
-          statId: "al-stat3"
-        },
-        { 
-          word: "révocation", 
-          type: "urgent",
-          barId: null,
-          statId: null
-        },
-        { 
-          word: "tribunal", 
-          type: "urgent",
-          barId: null,
-          statId: null
-        },
-        { 
-          word: "avocat", 
-          type: "urgent",
-          barId: null,
-          statId: null
-        },
-
+      let alertKeywords = [ // Urgent (red) keywords
+        { word: "licenciement",    type: "urgent",  barId: "bar-licenciement",    statId: "al-licenciement" },
+        { word: "discipline",      type: "urgent",  barId: "bar-discipline",      statId: "al-discipline" },
+        { word: "harcèlement",     type: "urgent",  barId: "bar-harcèlement",     statId: "al-harcèlement" },
+        { word: "révocation",      type: "urgent",  barId: "bar-révocation",      statId: "al-révocation" },
+        { word: "tribunal",        type: "urgent",  barId: "bar-tribunal",        statId: "al-tribunal" },
+        { word: "avocat",          type: "urgent",  barId: "bar-avocat",          statId: "al-avocat" },
         // Warning keywords
-        { 
-          word: "sanction", 
-          type: "warning",
-          barId: "bar-al4",
-          statId: "al-stat4"
-        },
-        { 
-          word: "injustice", 
-          type: "warning",
-          barId: null,
-          statId: null
-        },
-        { 
-          word: "blâme", 
-          type: "warning",
-          barId: null,
-          statId: null
-        },
-        { 
-          word: "mutation forcée", 
-          type: "warning",
-          barId: null,
-          statId: null
-        },
-
+        { word: "sanction",        type: "warning", barId: "bar-sanction",        statId: "al-sanction" },
+        { word: "injustice",       type: "warning", barId: "bar-injustice",       statId: "al-injustice" },
+        { word: "blâme",           type: "warning", barId: "bar-blâme",           statId: "al-blâme" },
+        { word: "mutation forcée", type: "warning", barId: "bar-mutation-forcée", statId: "al-mutation-forcée" },
         // Info keywords
-        { 
-          word: "démission", 
-          type: "info",
-          barId: null,
-          statId: null
-        },
-        { 
-          word: "disponibilité", 
-          type: "info",
-          barId: null,
-          statId: null
-        }
+        { word: "démission",       type: "info",    barId: "bar-démission",       statId: "al-démission" },
+        { word: "disponibilité",   type: "info",    barId: "bar-disponibilité",   statId: "al-disponibilité" }
       ];
 
       // Main function to load alerts
       async function loadAlerts() {
         try {
-
           // Fetch this month's conversations
           const thisMonth = new Date().toISOString().slice(0, 7);
-
-          const response = await fetch(
-            `${SUPABASE_URL}/rest/v1/conversations`+
-            `?select=agent_message,agent_name,`+
-            `agent_number,bpr,created_at`+
-            `&created_at=gte.${thisMonth}-01`+
-            `&order=created_at.desc`,
-            {
-              headers: {
-                'apikey': KEY,
-                'Authorization': 
-                `Bearer ${KEY}`
-              }
-            }
-          );
-
-          const conversations = await response.json();
-
+          const conversations = await api('conversations', `select=agent_message,agent_name,agent_number,bpr,created_at&created_at=gte.${thisMonth}-01&order=created_at.desc`);
+          
           // Count keywords
           let urgentTotal = 0;
           let warningTotal = 0;
@@ -1667,24 +1537,17 @@
             alertKeywords.forEach(k => {
               if (msg.includes(k.word.toLowerCase())) {
                 counts[k.word]++;
-                if (k.type === 'urgent') {
-                  urgentTotal++;
-                } else if (k.type === 'warning') {
-                  warningTotal++;
-                }
+                if (k.type === 'urgent') urgentTotal++;
+                else if (k.type === 'warning') warningTotal++;
               }
             });
           });
 
           // Get max for bar calculation
-          maxCount = Math.max(
-            ...Object.values(counts), 1
-          );
+          maxCount = Math.max(...Object.values(counts), 1);
 
-          // Update urgent counter
-          document.getElementById('al-urgentes').textContent = urgentTotal;
-
-          // Update warning counter
+          // Update urgent counter, Update warning counter
+          document.getElementById('al-urgentes').textContent  = urgentTotal;
           document.getElementById('al-attention').textContent = warningTotal;
 
           // Update stats bars
@@ -1704,26 +1567,41 @@
           });
 
           renderKeywords();
+          renderStatsBars(counts);
 
           // Update active alerts section
-          renderActiveAlerts(
-            counts, conversations
-          );
+          renderActiveAlerts(counts, conversations);
 
-        } catch(error) {
-          console.error(
-            'Alert loading error:', error
-          );
-        }
+        } catch(error) { console.error('Alert loading error:', error); }
+      }
+
+      // Add keyword
+      function addKeyword() {
+        const word = document.getElementById('nkw').value.trim();
+        const type = document.getElementById('nkw-level').value;
+        if(!word) {showToast('❌ Entrez un mot clé !', 'err'); return;}
+
+        // Check if already exists
+        if (alertKeywords.find(k => k.word.toLowerCase() === word.toLowerCase())) { 
+          showToast('❌ Keyword already exists!','err'); return;}
+
+        // Add as warning by default
+        alertKeywords.push({word, type, barId: `bar-${word}`, statId: `stat-${word}`});
+
+        renderConvKeywords();
+        renderKeywords();
+        loadAlerts();
+
+        showToast('✅ "' + word + '" ajouté !','ok');
+        closeModalById('m-kw');
       }
 
       // Remove keyword
       function removeKeyword(word) {
-        if(word.barId !== null) return; 
-        alertKeywords = alertKeywords.filter(
-          k => k.word !== word
-        );
-        loadAlerts();
+        alertKeywords = alertKeywords.filter(k => k.word !== word);
+        renderConvKeywords();
+        renderKeywords();
+        loadAlerts();  
       }
 
       // Render keyword badges
@@ -1734,7 +1612,7 @@
           <span 
             class="ktag ${k.type}"            
             onclick="removeKeyword('${k.word}')">
-            ${k.barId !== null ? k.word + ' ×' : k.word}
+            ${k.word + ' ×'}
           </span>
         `).join('');
       }
@@ -1742,7 +1620,7 @@
       // Render active alerts list
       function renderActiveAlerts(counts, conversations) {
         // Find active alerts container
-        const container = document.querySelector('.card .ctitle + div');
+        const container = document.getElementById('active-alerts');
         if (!container) return;
 
         let alertsHTML = '';
@@ -1758,26 +1636,10 @@
             const icon = k.type === 'urgent' ? '🔴' : k.type === 'warning' ? '⚠️' : 'ℹ️';
 
             alertsHTML += `
-              <div style="
-                background: ${
-                  k.type === 'urgent' 
-                  ? '#fdecea' 
-                  : '#fff8e1'
-                };
-                border-left: 4px solid ${
-                  k.type === 'urgent'
-                  ? '#e74c3c'
-                  : '#f39c12'
-                };
-                padding: 12px;
-                border-radius: 8px;
-                margin-bottom: 10px;
-                font-size: 13px;">
-                <strong>
-                  ${icon} "${k.word}" 
-                  détecté ${counts[k.word]} 
-                  fois ce mois
-                </strong>
+              <div style="background: ${ k.type === 'urgent'? '#fdecea' : '#fff8e1'};
+                border-left: 4px solid ${k.type === 'urgent' ? '#e74c3c' : '#f39c12'};
+                padding: 12px; border-radius: 8px; margin-bottom: 10px; font-size: 13px;">
+                <strong>${icon} "${k.word}" détecté ${counts[k.word]} fois ce mois </strong>
                 <div style="color:#888; margin-top:5px; font-size:12px;">
                   ${latest 
                     ? 'Dernier: ' + (latest.agent_name || latest.agent_number) + ' — ' +
@@ -1792,55 +1654,197 @@
 
         if (!hasAlerts) {
           container.innerHTML = `<div style="text-align:center; padding:20px;color:var(--gray-dark); font-size:13px;">
-              ✅ Aucune alerte active pour l'instant
-            </div>`;
-        } else {
-          container.innerHTML = alertsHTML;
+            ✅ Aucune alerte active pour l'instant
+          </div>`;
+        } else {container.innerHTML = alertsHTML;}
+      }
+
+      function renderStatsBars(counts) {
+        const container = document.getElementById('alertes-stats-list');
+        
+        const maxCount = Math.max(...Object.values(counts), 1);
+
+        container.innerHTML = alertKeywords.map(k => `
+          <div class="titem">
+            <div class="tname">
+              ${k.type === 'urgent' ? '🔴' : k.type === 'warning' ? '⚠️' : 'ℹ️'} ${k.word}
+            </div>
+            <div class="tbar">
+              <div class="tfill ${k.type === 'urgent' ? 'r' : k.type === 'warning' ? '' : 'b'}" id="${k.barId}" style="width: ${(counts[k.word] / maxCount)* 100}%"></div>
+            </div>
+            <div class="tcount" id="${k.statId} style="color:var(--red);">${counts[k.word]} </div>
+          </div>
+        `).join('');
+      }
+      // ─── END ALERTS ────────────────────────────────────────────────────────
+
+
+      // ─── CALENDAR ──────────────────────────────────────────────────────────
+      const CAL_MONTHS_FR = ['JAN','FÉV','MAR','AVR','MAI','JUN','JUL','AOÛ','SEP','OCT','NOV','DÉC'];
+
+      async function loadCalendrier() {
+        const result = await apiMake(CALENDAR_WEBHOOK, { method: 'get' });
+        const events = result.map(ev => ({
+          event_id  : ev.key,
+          title     : ev.data.title,
+          event_date: ev.data.event_date,
+          send_date : ev.data.send_date,
+          desc      : ev.data.desc,
+          active    : ev.data.active,
+          rappel    : ev.data.rappel,
+        })).sort((a, b) => a.event_date - b.event_date);
+
+        const event_container = document.getElementById('cal-events-list');
+        const reminder_container = document.getElementById('cal-reminders-list');
+        if (!event_container || !reminder_container) return;
+
+        event_container.innerHTML = events.map((ev, i) => {
+          const month = CAL_MONTHS_FR[new Date(ev.event_date).getMonth() - 1] || '';
+          const bg = ev.rappel === '3j' ? 'style="background:var(--red);"' : ev.rappel === '1s' ? 'style="background:var(--green);"' : ev.rappel === '1m' ? 'style="background:var(--blue);"' : '';
+          const isCustom = !!new Date(ev.event_date).getFullYear(); // saved events have real year
+          const del = isCustom ? '<span onclick="deleteCalEvent(\'' + ev.event_id + '\')" style="margin-left:auto;cursor:pointer;font-size:11px;color:var(--red);" title="Supprimer">🗑️</span>' : '';
+          return '<div class="calitem"><div class="caldate" ' + bg + '><div class="calday">' + new Date(ev.event_date).getDate() + '</div><div class="calmonth">' + month + '</div></div>' +
+            '<div style="flex:1;"><div class="caltitle">' + ev.title + '</div><div class="caldesc">' + ev.desc + '</div></div>' + del + '</div>';
+        }).join('') || '<div style="text-align:center;padding:16px;color:var(--gray-dark);">📅 Aucun événement à venir</div>';
+
+        reminder_container.innerHTML = events.filter(ev => ev.rappel !== 'non').map(ev => {
+          return '<div class="crow"><div class="clabel">' + ev.title + '</div><button class="toggle' + (ev.active ? ' on' : '') + '" onclick="toggleReminder(this,\'' + ev.event_id + '\')"></button></div>';
+        }).join('') || '<div style="text-align:center;padding:16px;color:var(--gray-dark);">🔕 Aucun rappel actif</div>';
+      }
+
+      async function saveEvent() {
+        const titre  = document.getElementById('ev-titre').value.trim() || '';
+        const date   = document.getElementById('ev-date').value;
+        const desc   = document.getElementById('ev-desc').value.trim() || '';
+        const rappel = document.getElementById('ev-rappel').value;
+
+        if (!titre || !date) { 
+          showToast('⚠️ Titre et date obligatoires', 'err'); 
+          return; 
         }
-      }
 
+        // Calculate send_date based on reminder choice
+        const eventDate = new Date(date);
+        let sendDate = new Date(date);
+        if (rappel === '3j') sendDate.setDate(eventDate.getDate() - 3);
+        if (rappel === '1s') sendDate.setDate(eventDate.getDate() - 7);
+        if (rappel === '1m') sendDate.setMonth(eventDate.getMonth() - 1);
 
-
-      async function loadConfig(){
-        try{
-          const d=await api('documents','select=id');
-          const n=await api('documents','embedding=is.null&select=id');
-          document.getElementById('cfg-docs').textContent=d.length;
-          document.getElementById('cfg-emb').textContent=n.length===0?'✅ 0':'⚠️ '+n.length;
-        }catch(e){}
-        try{
-          const c=await api('conversations','select=id');
-          document.getElementById('cfg-convs').textContent=c.length;
-        }catch(e){document.getElementById('cfg-convs').textContent='Table non créée';}
-      }
-
-      async function loadCarte(){
-        const data=await gsRead('MASTER',2);
-        if(!data)return;
-        const actifs=data.filter(function(r){return r['STATUT']==='Actif'&&r['NUMÉRO']&&!r['NUMÉRO'].includes('X');});
-        const bprMap={
-          'TANGER':'bpr-tt','CASABLANCA':'bpr-casa','RABAT':'bpr-rabat',
-          'FES':'bpr-fes','MEKNES':'bpr-fes','MARRAKECH':'bpr-mrak',
-          'AGADIR':'bpr-agadir','OUJDA':'bpr-oujda','LAAYOUNE':'bpr-laay','NADOR':'bpr-nador'
+        const payload = {
+          event_id  : 'ev_' + Date.now(),
+          title     : titre,
+          event_date: date,
+          send_date : rappel === 'non' ? null : sendDate.toISOString().slice(0, 10),
+          desc      : desc,
+          active    : rappel === 'non' ? null : true,   
+          rappel    : rappel,
+          method    : 'add'
         };
-        const counts={'bpr-tt':0,'bpr-casa':0,'bpr-rabat':0,'bpr-fes':0,'bpr-mrak':0,'bpr-agadir':0,'bpr-oujda':0,'bpr-laay':0,'bpr-nador':0};
-        actifs.forEach(function(a){
-          const bpr=(a['BPR']||'').toUpperCase();
-          Object.keys(bprMap).forEach(function(k){if(bpr.includes(k))counts[bprMap[k]]++;});
+
+        // NEW — Send to Make.com
+        const result = await apiMake(CALENDAR_WEBHOOK, payload);
+
+        if (result) {
+          showToast('✅ Événement ajouté + rappel WhatsApp programmé !', 'ok');          
+        } else {
+          showToast('❌ Erreur, l\'événement n\'a pas été ajouté!', 'err'); return;
+        }
+        
+        closeModalById('m-event');
+        document.getElementById('ev-titre').value = '';
+        document.getElementById('ev-date').value  = '';
+        document.getElementById('ev-desc').value  = '';
+        document.getElementById('ev-rappel').selectedIndex = 0;        
+        
+        loadCalendrier();
+        // Add to notification log
+        addNotifEntry('📅 Nouvel événement ajouté : ' + titre, 'calendrier');
+      }
+
+      async function deleteCalEvent(idx) {
+        const result = await apiMake(CALENDAR_WEBHOOK, { event_id: idx, method: 'delete' });
+        
+        if (result) {
+          showToast('✅ Succès : L\'événement a été éliminé avec succès !', 'ok');
+        } else {
+          showToast('❌ Erreur, l\'événement n\'a pas été supprimé!', 'err'); return;
+        }
+
+        loadCalendrier();
+      }
+
+      async function toggleReminder(btn, key) {
+        btn.classList.toggle('on');
+        const isOn = btn.classList.contains('on');
+
+        const payload = {
+          event_id: key,
+          action  : isOn ? 'activate' : 'deactivate',
+          method  : 'toggle'
+        };
+
+        // Notify Make.com of the toggle state change
+        const result = await apiMake(CALENDAR_WEBHOOK, payload);
+
+        if (result) {
+          showToast(isOn ? '✅ Rappel activé — Make.com notifié' : '🔕 Rappel désactivé', 'ok');
+        } else {
+          showToast('❌ Erreur, le rappel a échoué!', 'err'); return;
+        }
+
+        addNotifEntry((isOn ? '✅ Rappel activé : ' : '🔕 Rappel désactivé : '), 'calendrier');
+      }
+      // ─── END CALENDAR ──────────────────────────────────────────────────────
+
+
+      // ─── BPR CARTE ─────────────────────────────────────────────────────────
+      async function loadCarte() {
+        const data = await gsRead('MASTER', 0);
+        if(!data) return;
+        const actifs = data.filter(function(r) {return r['STATUT'] === 'Actif' && r['NUMÉRO'] && !r['NUMÉRO'].includes('X');});
+        const bprMap = {
+          'TANGER'     : 'bpr-tt',
+          'CASABLANCA' : 'bpr-casa',
+          'RABAT'      : 'bpr-rabat',
+          'FÈS'        : 'bpr-fes',
+          'MEKNES'     : 'bpr-fes',
+          'MARRAKECH'  : 'bpr-mrak',
+          'AGADIR'     : 'bpr-agadir',
+          'OUJDA'      : 'bpr-oujda',
+          'LAÂYOUNE'   : 'bpr-laay',
+          'NADOR'      : 'bpr-nador'
+        };
+        const counts = {'bpr-tt': 0, 'bpr-casa': 0, 'bpr-rabat': 0, 'bpr-fes': 0, 'bpr-mrak': 0, 'bpr-agadir': 0, 'bpr-oujda': 0, 'bpr-laay': 0, 'bpr-nador': 0};
+        actifs.forEach(function(a) {
+          const bpr = (a['BPR'] || '').toUpperCase();
+          Object.keys(bprMap).forEach(function(k) {
+            if(bpr.includes(k)) counts[bprMap[k]]++;
+          });
         });
-        Object.keys(counts).forEach(function(id){
-          const el=document.getElementById(id);
-          if(el)el.textContent=counts[id]||'0';
+        Object.keys(counts).forEach(function(id) {
+          const el = document.getElementById(id);
+          if (el) el.textContent = counts[id] || '0';
         });
-        const bprNames={'bpr-tt':'BPR Tanger-Tétouan','bpr-casa':'BPR Casablanca (BCP)','bpr-rabat':'BPR Rabat-Kénitra','bpr-fes':'BPR Fès-Meknès','bpr-mrak':'BPR Marrakech','bpr-agadir':'BPR Agadir','bpr-oujda':'BPR Oujda','bpr-nador':'BPR Nador','bpr-laay':'BPR Laâyoune'};
-        const totalActifs=actifs.length||1;
-        const carteBPR=document.getElementById('carte-agents-bpr');
-        if(carteBPR){
-          const sorted=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a];});
-          carteBPR.innerHTML=sorted.map(function(id){
-            const n=counts[id]||0;
-            const pct=Math.round((n/totalActifs)*100);
-            return '<div class="titem"><div class="tname">'+bprNames[id]+'</div><div class="tbar"><div class="tfill" style="width:'+Math.max(pct,2)+'%"></div></div><div class="tcount">'+n+'</div></div>';
+        const bprNames = {
+          'bpr-tt'     : 'BPR Tanger-Tétouan',
+          'bpr-casa'   : 'BPR Casablanca BCP',
+          'bpr-rabat'  : 'BPR Rabat-Kénitra',
+          'bpr-fes'    : 'BPR Fès-Meknès',
+          'bpr-mrak'   : 'BPR Marrakech-Béni Mellal',
+          'bpr-agadir' : 'BPR Agadir Centre-Sud',
+          'bpr-oujda'  : 'BPR Oujda',
+          'bpr-nador'  : 'BPR Nador-Al Hoceima',
+          'bpr-laay'   : 'BPR Laâyoune'
+        };
+
+        const totalActifs = actifs.length || 1;
+        const carteBPR = document.getElementById('carte-agents-bpr');
+        if (carteBPR) {
+          const sorted = Object.keys(counts).sort(function(a, b) {return counts[b]-counts[a];});
+          carteBPR.innerHTML = sorted.map(function(id) {
+            const n = counts[id] || 0;
+            const pct = Math.round((n/totalActifs)*100);
+            return '<div class="titem"><div class="tname">' + bprNames[id] + '</div><div class="tbar"><div class="tfill" style="width:' + Math.max(pct, 2) + '%"></div></div><div class="tcount">'+n+'</div></div>';
           }).join('');
         }
       }
@@ -1856,6 +1860,8 @@
           '<div class="crow"><div class="clabel">Alertes ce mois</div><div class="cval" style="color:var(--red);">2</div></div>'+
           '<button onclick="go(\'diffusion\',null)" style="margin-top:10px;" class="btn gold sm">📢 Diffuser à cette BPR</button>';
       }
+      // ─── END BPR CARTE ─────────────────────────────────────────────────────
+
 
       function updUF(){
         const r=document.getElementById('nu-role').value;
@@ -1867,18 +1873,19 @@
         }).join('');
       }
 
-      function addUser(){
-        const nom=document.getElementById('nu-nom').value.trim();
-        const pwd=document.getElementById('nu-pwd').value.trim();
-        const role=document.getElementById('nu-role').value;
-        const bpr=role==='delegue'?document.getElementById('nu-bpr').value:'all';
-        if(!nom||!pwd){showToast('❌ Remplissez tous les champs !','err');return;}
-        if(users.find(function(u){return u.pwd===pwd;})){showToast('❌ Mot de passe déjà utilisé !','err');return;}
-        users.push({nom:nom,pwd:pwd,role:role,bpr:bpr});saveUsers();
-        const el=document.getElementById('hab-list');
-        const d=document.createElement('div');
-        d.className='habcard '+role;
-        const permsHtml=Object.keys(PERMS[role]).filter(function(k){return k!=='bpr';}).slice(0,8).map(function(k){
+      function addUser() {
+        const nom  = document.getElementById('nu-nom').value.trim();
+        const pwd  = document.getElementById('nu-pwd').value.trim();
+        const role = document.getElementById('nu-role').value;
+        const bpr = role === 'delegue' ? document.getElementById('nu-bpr').value : 'all';
+        if(!nom||!pwd){showToast('❌ Remplissez tous les champs !','err'); return;}
+        if(users.find(function(u){return u.pwd === pwd;})){showToast('❌ Mot de passe déjà utilisé !','err');return;}
+        users.push({nom: nom, pwd: pwd, role: role, bpr: bpr}); 
+        saveUsers();
+        const el = document.getElementById('hab-list');
+        const d  = document.createElement('div');
+        d.className = 'habcard ' + role;
+        const permsHtml = Object.keys(PERMS[role]).filter(function(k) {return k !== 'bpr';}).slice(0,8).map(function(k) {
           return '<span class="ptag '+(PERMS[role][k]?'':'no')+'">'+(PERMS[role][k]?'✅':'❌')+' '+k+'</span>';
         }).join('');
         d.innerHTML='<div class="habheader"><div><div class="habname">'+nom+'</div>'+
@@ -1891,28 +1898,11 @@
         closeModalById('m-user');
       }
 
-      function removeUser(btn){
-        const nom=btn.dataset.unom;
-        users=users.filter(function(u){return u.nom!==nom;});saveUsers();
+      function removeUser(btn) {
+        const nom = btn.dataset.unom;
+        users = users.filter(function(u){return u.nom !== nom;}); saveUsers();
         btn.parentElement.remove();
-        showToast('🗑️ Utilisateur supprimé','ok');
-      }
-
-      function addKw() {
-        const word = document.getElementById('nkw').value.trim();
-        const type = document.getElementById('nkw-level').value;
-        if(!word) {showToast('❌ Entrez un mot clé !','err'); return;}
-
-        // Check if already exists
-        if (alertKeywords.find(k => k.word.toLowerCase() === word.toLowerCase())) { alert('Keyword already exists!'); return;}
-
-        // Add as warning by default
-        alertKeywords.push({word, type});
-
-        loadAlerts();
-
-        showToast('✅ "' + word + '" ajouté !','ok');
-        closeModalById('m-kw');
+        showToast('🗑️ Utilisateur supprimé', 'ok');
       }
 
       function filterDoss(t){
@@ -1924,81 +1914,193 @@
         });
       }
 
-      function openModal(id){document.getElementById(id).classList.add('open');function genererFichier(){
-        const nonAdmin=users.filter(function(u){return u.role!=='admin';});
-        const usersLine="const USERS_DATA=[\n  {nom:'Administrateur SNGBP-CDT',pwd:'CDT2026',role:'admin',bpr:'all'}"+
-          (nonAdmin.length>0?',\n  '+nonAdmin.map(function(u){return JSON.stringify(u);}).join(',\n  '):'')+
-          "\n];";
-        const marker="const USERS_DATA=[";
-        const endMarker="];";
-        let content=document.documentElement.outerHTML;
-        const startIdx=content.indexOf(marker);
-        const endIdx=content.indexOf(endMarker,startIdx)+endMarker.length;
-        const newContent=content.substring(0,startIdx)+usersLine+content.substring(endIdx);
-        const blob=new Blob([newContent],{type:'text/html'});
-        const a=document.createElement('a');
-        a.href=URL.createObjectURL(blob);
-        a.download='index.html';
-        a.click();
-        showToast('✅ Fichier téléchargé ! Déposez-le sur Netlify.','ok');
-      }
-
       updUF();
       initHabList();
 
-      function imprimerRapport(){
+      function imprimerRapport() {
         const titre=document.title;
         document.title='Rapport SNGBP-CDT — '+new Date().toLocaleDateString('fr-FR');
         window.print();
         document.title=titre;
       }
 
-      async function loadRapports(){
+
+      // ─── BOT QUALITY ────────────────────────────────────────────────────────
+      async function loadQualite() {
+        try {
+          // Fetch all conversations
+          const convs = await api('conversations', 'select=id,agent_message,bot_response,created_at&order=created_at.desc&limit=500');
+          if (!convs || convs.length === 0) {
+            document.getElementById('q-satisfait').textContent = '0';
+            document.getElementById('q-nonsatisfait').textContent = '0';
+            document.getElementById('q-sans-reponse').innerHTML = '<div style="text-align:center;padding:20px;color:var(--gray-dark);font-size:12px;">📊 Aucune conversation enregistrée pour le moment.</div>';
+            return;
+          }
+
+          // ── 1. Satisfactory vs No clear answer ──────────────────────────────
+          // A "no clear answer" response contains these phrases
+          const noAnswerPhrases = [
+            "je ne sais pas", 
+            "je n'ai pas", 
+            "pas d'information",
+            "aucune information", 
+            "désolé", 
+            "ne trouve pas",
+            "hors de ma", 
+            "ne peux pas répondre", 
+            "sans réponse",
+            "consulter", 
+            "contactez", 
+            "service compétent"
+          ];
+          let satisfait = 0, nonSatisfait = 0;
+          convs.forEach(c => {
+            const rep = (c.bot_response || '').toLowerCase();
+            if (!rep || rep.length < 10) { nonSatisfait++; return; }
+            const isUnclear = noAnswerPhrases.some(p => rep.includes(p));
+            if (isUnclear) nonSatisfait++; else satisfait++;
+          });
+          const total = satisfait + nonSatisfait;
+          const pctSat = total > 0 ? Math.round((satisfait / total) * 100) : 0;
+          document.getElementById('q-satisfait').textContent = satisfait + ' (' + pctSat + '%)';
+          document.getElementById('q-nonsatisfait').textContent = nonSatisfait + ' (' + (100-pctSat) + '%)';
+
+          // ── 2. Unanswered / unclear questions list ───────────────────────────
+          const unclearConvs = convs.filter(c => {
+            const rep = (c.bot_response || '').toLowerCase();
+            return !rep || rep.length < 10 || noAnswerPhrases.some(p => rep.includes(p));
+          }).slice(0, 10);
+          const qsrEl = document.getElementById('q-sans-reponse');
+          if (unclearConvs.length === 0) {
+            qsrEl.innerHTML = '<div style="text-align:center;padding:16px;color:var(--green);font-size:13px;">✅ Toutes les questions ont eu une réponse satisfaisante !</div>';
+          } else {
+            qsrEl.innerHTML = unclearConvs.map(c => {
+              const d = new Date(c.created_at).toLocaleDateString('fr-FR');
+              const q = (c.agent_message || '—').substring(0, 120);
+              return '<div style="padding:9px 0;border-bottom:1px solid var(--gray);font-size:12px;">' +
+                '<span style="color:var(--gray-dark);font-size:11px;">📅 ' + d + '</span><br>' +
+                '<span style="font-weight:600;color:var(--dark);">❓ ' + q + '</span>' +
+                '</div>';
+            }).join('');
+          }
+
+          // ── 3. Most viewed documents (by keyword detection) ─────────────────
+          const docKeywords = [
+            { id: 'qd1', name: 'MPBP Knowledge Base',         keys: ['mpbp','prêt','pbl'] },
+            { id: 'qd2', name: 'Knowledge Base_Leaves',       keys: ['congé','conges','leave','absence','vacance'] },
+            { id: 'qd3', name: 'Personal Credits (CPM)',      keys: ['crédit','cpm','prêt personnel','credit'] },
+            { id: 'qd4', name: 'Retirement Knowledge Base',   keys: ['retraite','pension','retirement'] }
+          ];
+          const allText = convs.map(c => ((c.agent_message||'') + ' ' + (c.bot_response||'')).toLowerCase());
+          const totalConvs = convs.length || 1;
+          let maxCount = 1;
+          const counts = docKeywords.map(doc => {
+            const count = allText.filter(t => doc.keys.some(k => t.includes(k))).length;
+            if (count > maxCount) maxCount = count;
+            return { ...doc, count };
+          });
+          counts.forEach(doc => {
+            const el = document.getElementById(doc.id);
+            if (el) el.textContent = doc.count;
+            // Update bar width
+            const barParent = el ? el.previousElementSibling : null;
+            if (barParent) {
+              const fill = barParent.querySelector('.tfill');
+              if (fill) fill.style.width = Math.round((doc.count / maxCount) * 100) + '%';
+            }
+          });
+
+          // ── 4. Monthly quality evolution chart ─────────────────────────────
+          const monthlyMap = {};
+          convs.forEach(c => {
+            const month = (c.created_at || '').slice(0, 7);
+            if (!month) return;
+            if (!monthlyMap[month]) monthlyMap[month] = { total: 0, good: 0 };
+            monthlyMap[month].total++;
+            const rep = (c.bot_response || '').toLowerCase();
+            if (rep && rep.length >= 10 && !noAnswerPhrases.some(p => rep.includes(p))) {
+              monthlyMap[month].good++;
+            }
+          });
+          const months = Object.keys(monthlyMap).sort().slice(-6);
+          const evEl = document.getElementById('q-evolution');
+          if (months.length === 0) {
+            evEl.innerHTML = '<div style="text-align:center;padding:16px;color:var(--gray-dark);font-size:12px;">📊 Données insuffisantes pour le graphique mensuel.</div>';
+          } else {
+            const maxVal = Math.max(...months.map(m => monthlyMap[m].total), 1);
+            const monthNames = { '01':'Jan','02':'Fév','03':'Mar','04':'Avr','05':'Mai','06':'Jun','07':'Jul','08':'Aoû','09':'Sep','10':'Oct','11':'Nov','12':'Déc' };
+            evEl.innerHTML = '<div style="display:flex;align-items:flex-end;gap:10px;height:120px;padding:10px 0;">' +
+              months.map(m => {
+                const d = monthlyMap[m];
+                const pct = Math.round((d.good / (d.total || 1)) * 100);
+                const h = Math.round((d.total / maxVal) * 90);
+                const label = monthNames[m.slice(5,7)] + ' ' + m.slice(0,4);
+                return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">' +
+                  '<div style="font-size:10px;font-weight:700;color:var(--green);">' + pct + '%</div>' +
+                  '<div style="width:100%;height:' + h + 'px;background:linear-gradient(to top,var(--green),var(--gold));border-radius:5px 5px 0 0;min-height:8px;" title="' + d.total + ' conversations, ' + pct + '% satisfaisantes"></div>' +
+                  '<div style="font-size:9px;color:var(--gray-dark);text-align:center;">' + label + '</div>' +
+                  '</div>';
+              }).join('') +
+              '</div>' +
+              '<div style="font-size:11px;color:var(--gray-dark);text-align:center;margin-top:4px;">Taux de satisfaction mensuel — ' + total + ' conversations totales</div>';
+          }
+
+        } catch(e) {
+          console.error('loadQualite error:', e);
+        }
+      }
+      // ─── END BOT QUALITY ──────────────────────────────────────────────────
+
+
+      // ─── RAPPORTS ────────────────────────────────────────────────────────
+      async function loadRapports() {
         // Date du rapport
-        const dateEl=document.getElementById('rapport-date');
-        if(dateEl){
-          const now=new Date();
-          dateEl.textContent='Généré le : '+now.toLocaleDateString('fr-FR',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+' à '+now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+        const dateEl = document.getElementById('rapport-date');
+        if(dateEl) {
+          const now = new Date();
+          dateEl.textContent = 'Généré le : ' + now.toLocaleDateString('fr-FR', {weekday:'long', year:'numeric', month:'long', day:'numeric'}) + ' à ' + now.toLocaleTimeString('fr-FR', {hour:'2-digit', minute:'2-digit'});
         }
 
         // Stats conversations Supabase
-        try{
-          const c=await api('conversations','select=id,created_at');
-          const total=c.length||0;
-          document.getElementById('r-total').textContent=total;
-          document.getElementById('syn-convs').textContent=total;
+        try {
+          const c = await api('conversations', 'select=id,agent_message,bot_response,created_at');
+          const total = c.length || 0;
+          document.getElementById('r-total').textContent   = total;
+          document.getElementById('syn-convs').textContent = total;
+
           // Calcul thèmes depuis conversations
-          const themes={'mpbp':0,'mutuelle':0,'congé':0,'absence':0,'retraite':0,'crédit':0,'pl2p':0,'discipline':0,'sanction':0,'aide':0,'scolaire':0};
-          c.forEach(function(conv){
-            const msg=((conv.agent_message||'')+(conv.bot_response||'')).toLowerCase();
-            if(msg.includes('mpbp')||msg.includes('mutuelle'))themes['mpbp']++;
-            if(msg.includes('congé')||msg.includes('absence'))themes['congé']++;
-            if(msg.includes('retraite'))themes['retraite']++;
-            if(msg.includes('crédit')||msg.includes('pl2p')||msg.includes('moujoud'))themes['crédit']++;
-            if(msg.includes('discipline')||msg.includes('sanction')||msg.includes('blâme'))themes['discipline']++;
-            if(msg.includes('aide')||msg.includes('scolaire'))themes['aide']++;
+          const themes = {'mpbp': 0, 'mutuelle': 0, 'congé': 0, 'absence': 0, 'retraite': 0, 'crédit': 0, 'pl2p': 0, 'discipline': 0, 'sanction': 0, 'aide': 0, 'scolaire': 0};
+          c.forEach(function(conv) {
+            const msg = ((conv.agent_message || '') + (conv.bot_response || '')).toLowerCase();
+            if(msg.includes('mpbp') || msg.includes('mutuelle')) themes['mpbp']++;
+            if(msg.includes('congé') || msg.includes('absence')) themes['congé']++;
+            if(msg.includes('retraite')) themes['retraite']++;
+            if(msg.includes('crédit') || msg.includes('pl2p') || msg.includes('moujoud')) themes['crédit']++;
+            if(msg.includes('discipline') || msg.includes('sanction') || msg.includes('blâme')) themes['discipline']++;
+            if(msg.includes('aide') || msg.includes('scolaire')) themes['aide']++;
           });
-          const tmax=Math.max(themes['mpbp'],themes['congé'],themes['retraite'],themes['crédit'],themes['discipline'],themes['aide'],1);
-          const tvals=[themes['mpbp'],themes['congé'],themes['retraite'],themes['crédit'],themes['discipline'],themes['aide']];
-          tvals.forEach(function(v,i){
-            const el=document.getElementById('t'+(i+1));
-            const bar=document.getElementById('bar-t'+(i+1));
-            if(el)el.textContent=v||'—';
-            if(bar)bar.style.width=Math.max(Math.round((v/tmax)*100),3)+'%';
+          const tmax = Math.max(themes['mpbp'], themes['congé'], themes['retraite'], themes['crédit'], themes['discipline'], themes['aide'], 1);
+          const tvals = [themes['mpbp'], themes['congé'], themes['retraite'], themes['crédit'], themes['discipline'], themes['aide']];
+
+          tvals.forEach(function(v, i) {
+            const el  = document.getElementById('t'+(i+1));
+            const bar = document.getElementById('bar-t'+(i+1));
+            if (el)   el.textContent = v || '—';
+            if (bar) bar.style.width = Math.max(Math.round((v/tmax)*100), 3)+'%';
           });
 
           // Evolution mensuelle
-          const moisData={};
-          const now=new Date();
-          for(let i=5;i>=0;i--){
-            const d=new Date(now.getFullYear(),now.getMonth()-i,1);
-            const key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
-            moisData[key]=0;
+          const moisData = {};
+          const now = new Date();
+          for(let i = 5; i >= 0; i--) {
+            const d = new Date(now.getFullYear(), now.getMonth()-i,1);
+            const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0');
+            moisData[key] = 0;
           }
-          c.forEach(function(conv){
-            if(conv.created_at){
-              const key=conv.created_at.substring(0,7);
-              if(moisData[key]!==undefined)moisData[key]++;
+          c.forEach(function(conv) {
+            if(conv.created_at) {
+              const key = conv.created_at.substring(0,7);
+              if (moisData[key] !== undefined) moisData[key]++;
             }
           });
           drawEvolutionChart(moisData);
@@ -2007,31 +2109,56 @@
         }
 
         // Stats agents Google Sheets
-        const data=await gsRead('MASTER',2);
-        if(data){
-          const vrais=data.filter(function(r){return r['NUMÉRO']&&!r['NUMÉRO'].includes('X');});
-          const actifs=vrais.filter(function(r){return r['STATUT']==='Actif';});
-          document.getElementById('r-agents').textContent=actifs.length||'—';
-          document.getElementById('syn-agents').textContent=vrais.length||'—';
+        const data = await gsRead('MASTER', 0);
+        if(data) {
+          const vrais  = data.filter(function(r)  {return r['NUMÉRO'] && !r['NUMÉRO'].includes('X');});
+          const actifs = vrais.filter(function(r) {return r['STATUT'] === 'Actif';});
+          document.getElementById('r-agents').textContent   = actifs.length || '—';
+          document.getElementById('syn-agents').textContent = vrais.length || '—';
 
           // Tableau par BPR
-          const bprList=['BPR TANGER-TETOUAN','BPR CASABLANCA (BCP)','BPR RABAT-KENITRA','BPR FES-MEKNES','BPR MARRAKECH-BENI MELLAL','BPR AGADIR (CENTRE-SUD)','BPR OUJDA','BPR NADOR-AL HOCEIMA','BPR LAAYOUNE'];
-          const bprDisplay={'BPR TANGER-TETOUAN':'Tanger-Tétouan','BPR CASABLANCA (BCP)':'Casablanca (BCP)','BPR RABAT-KENITRA':'Rabat-Kénitra','BPR FES-MEKNES':'Fès-Meknès','BPR MARRAKECH-BENI MELLAL':'Marrakech-Béni Mellal','BPR AGADIR (CENTRE-SUD)':'Agadir (Centre-Sud)','BPR OUJDA':'Oujda','BPR NADOR-AL HOCEIMA':'Nador-Al Hoceima','BPR LAAYOUNE':'Laâyoune'};
-          const bprStats={};
-          bprList.forEach(function(b){bprStats[b]={total:0,actifs:0};});
-          vrais.forEach(function(r){
-            const bpr=(r['BPR']||'').toUpperCase().trim();
-            bprList.forEach(function(b){if(bpr===b||bpr.includes(b.replace('BPR ',''))){bprStats[b].total++;if(r['STATUT']==='Actif')bprStats[b].actifs++;}});
+          const bprList = [
+            'BPR TANGER-TÉTOUAN',
+            'BPR CASABLANCA BCP',
+            'BPR RABAT-KÉNITRA',
+            'BPR FÈS-MEKNÈS',
+            'BPR MARRAKECH-BÉNI MELLAL',
+            'BPR AGADIR CENTRE-SUD',
+            'BPR OUJDA',
+            'BPR NADOR-AL HOCEIMA',
+            'BPR LAÂYOUNE'
+          ];
+          const bprDisplay = {
+            'BPR TANGER-TÉTOUAN': 'BPR Tanger-Tétouan',
+            'BPR CASABLANCA BCP': 'BPR Casablanca BCP',
+            'BPR RABAT-KÉNITRA': 'BPR Rabat-Kénitra',
+            'BPR FÈS-MEKNÈS': 'BPR Fès-Meknès',
+            'BPR MARRAKECH-BÉNI MELLAL': 'BPR Marrakech-Béni Mellal',
+            'BPR AGADIR CENTRE-SUD': 'BPR Agadir Centre-Sud',
+            'BPR OUJDA': 'BPR Oujda',
+            'BPR NADOR-AL HOCEIMA': 'BPR Nador-Al Hoceima',
+            'BPR LAÂYOUNE': 'BPR Laâyoune'
+          };
+          const bprStats = {};
+          bprList.forEach(function(b) {bprStats[b] = {total: 0, actifs: 0};});
+          vrais.forEach(function(r) {
+            const bpr = (r['BPR'] || '').toUpperCase().trim();
+            bprList.forEach(function(b){
+              if (bpr === b || bpr.includes(b.replace('BPR ', ''))) {
+                bprStats[b].total++;
+                if(r['STATUT'] === 'Actif') bprStats[b].actifs++;
+              }
+            });          
           });
 
           // Remplir le tableau
-          const tbody=document.getElementById('rapport-tbody');
-          const bprCounts=[];
-          tbody.innerHTML=bprList.map(function(b){
-            const s=bprStats[b];
-            const pct=s.total>0?Math.round((s.actifs/s.total)*100):0;
-            const statut=pct>=80?'<span class="badge bg-green">✅ Bon</span>':pct>=50?'<span class="badge bg-amber">⚠️ Moyen</span>':'<span class="badge bg-red">🔴 Faible</span>';
-            bprCounts.push({name:bprDisplay[b],actifs:s.actifs,total:s.total});
+          const tbody = document.getElementById('rapport-tbody');
+          const bprCounts = [];
+          tbody.innerHTML = bprList.map(function(b) {
+            const s = bprStats[b];
+            const pct = s.total > 0 ? Math.round((s.actifs/s.total)*100) : 0;
+            const statut = pct >= 80 ? '<span class="badge bg-green">✅ Bon</span>':pct>=50?'<span class="badge bg-amber">⚠️ Moyen</span>':'<span class="badge bg-red">🔴 Faible</span>';
+            bprCounts.push({name:bprDisplay[b], actifs: s.actifs, total: s.total});
             return '<tr style="border-bottom:1px solid var(--border);">'+
               '<td style="padding:8px 10px;font-weight:600;color:var(--dark);">'+bprDisplay[b]+'</td>'+
               '<td style="padding:8px 10px;text-align:center;">'+s.total+'</td>'+
@@ -2047,25 +2174,25 @@
       }
 
       function drawBPRChart(data){
-        const canvas=document.getElementById('chart-bpr');
-        if(!canvas)return;
-        try{
-          if(window.chartBPR)window.chartBPR.destroy();
-          const ctx=canvas.getContext('2d');
-          const gold='rgba(201,149,42,0.85)';
-          const goldLight='rgba(240,180,41,0.6)';
-          window.chartBPR=new Chart(ctx,{
-            type:'bar',
-            data:{
+        const canvas = document.getElementById('chart-bpr');
+        if(!canvas) return;
+        try {
+          if(window.chartBPR) window.chartBPR.destroy();
+          const ctx = canvas.getContext('2d');
+          const gold = 'rgba(201,149,42,0.85)';
+          const goldLight = 'rgba(240,180,41,0.6)';
+          window.chartBPR = new Chart(ctx, {
+            type: 'bar',
+            data: {
               labels:data.map(function(d){return d.name.replace('BPR ','');}),
               datasets:[
-                {label:'Agents actifs',data:data.map(function(d){return d.actifs;}),backgroundColor:gold,borderColor:'rgba(122,90,0,1)',borderWidth:1,borderRadius:4},
-                {label:'Total inscrits',data:data.map(function(d){return d.total;}),backgroundColor:goldLight,borderColor:'rgba(201,149,42,0.4)',borderWidth:1,borderRadius:4}
+                {label: 'Agents actifs',  data:data.map(function(d){return d.actifs;}), backgroundColor:gold,      borderColor:'rgba(122,90,0,1)',     borderWidth: 1, borderRadius: 4},
+                {label: 'Total inscrits', data:data.map(function(d){return d.total;}),  backgroundColor:goldLight, borderColor:'rgba(201,149,42,0.4)', borderWidth: 1, borderRadius: 4}
               ]
             },
             options:{
-              responsive:true,maintainAspectRatio:true,
-              plugins:{legend:{position:'bottom',labels:{font:{size:11},color:'#7A6A3A'}}},
+              responsive:true, maintainAspectRatio:true,
+              plugins:{legend: {position:'bottom', labels: {font: {size: 11}, color: '#7A6A3A'}}},
               scales:{
                 y:{beginAtZero:true,ticks:{color:'#7A6A3A',font:{size:10}},grid:{color:'rgba(237,217,138,0.3)'}},
                 x:{ticks:{color:'#7A6A3A',font:{size:9},maxRotation:30},grid:{display:false}}
@@ -2076,9 +2203,9 @@
           // Fallback barres manuelles
           document.getElementById('chart-bpr').style.display='none';
           document.getElementById('chart-bpr-fallback').style.display='block';
-          const max=Math.max(...data.map(function(d){return d.actifs;}))||1;
-          document.getElementById('bpr-bars-manual').innerHTML=data.map(function(d){
-            const pct=Math.round((d.actifs/max)*100);
+          const max = Math.max(...data.map(function(d){return d.actifs;}))||1;
+          document.getElementById('bpr-bars-manual').innerHTML = data.map(function(d) {
+            const pct = Math.round((d.actifs/max)*100);
             return '<div class="titem"><div class="tname" style="font-size:11px;">'+d.name+'</div><div class="tbar"><div class="tfill" style="width:'+pct+'%"></div></div><div class="tcount">'+d.actifs+'</div></div>';
           }).join('');
         }
@@ -2133,8 +2260,145 @@
           }).join('');
         }
       }
-      function initHabList(){
-        const extra=users.filter(function(u){return u.role!=='admin';});
+      // ─── END RAPPORTS ──────────────────────────────────────────────────────
+
+      
+      // ─── NOTIFICATIONS ─────────────────────────────────────────────────────
+      let NOTIF_LOG = [];
+      try { NOTIF_LOG = JSON.parse(localStorage.getItem('sngbp_notifs') || '[]'); } catch(e) {}
+
+      async function addNotifEntry(msg, type) { 
+        // Save to Supabase 
+        await apiPost( 'notifications' , { type: type, message: msg, is_read: false }); 
+        // Also locally for immediate display 
+        const entry = { msg, type, time: new Date().toISOString(), read: false }; 
+        NOTIF_LOG.unshift(entry); 
+        if (NOTIF_LOG.length > 50) NOTIF_LOG = NOTIF_LOG.slice(0, 50); 
+        try { 
+          localStorage.setItem('sngbp_notifs', JSON.stringify(NOTIF_LOG)); 
+        } catch(e) {} 
+      }
+
+      async function apiMake(key, payload) {
+        if (key && !key.startsWith('YOUR_')) {
+          const saved = await fetch(key, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          return await saved.json();
+        } else return false;
+      }
+
+      async function loadNotifs() {        
+        const thisMonth = new Date().toISOString().slice(0, 7);
+        const notifications = await api('notifications', `select=id,type,message,is_read,created_at&created_at=gte.${thisMonth}-01&order=created_at.desc`);
+      
+        const result = await apiMake(NOTIFI_WEBHOOKS, { method: 'get' });
+        const toggles = result.map(ev => ({
+          notif_key: ev.key,
+          status   : ev.data.status
+        }));
+        
+        toggles.forEach(notif => {
+          const btn = document.getElementById('ntog-' + notif.notif_key);
+          if (btn) notif.status === 'active' ? btn.classList.add('on') : btn.classList.remove('on');
+        });
+
+        // Pull real alert counts from Supabase conversations this month
+        const sentCount = await apiPost('rpc/get_count_conversation');
+
+        const readCount = notifications.filter(notif => notif.is_read).length;
+        const totalLog  = notifications.length;
+        const pendCount = Math.max(0, totalLog - readCount);
+        const rate      = totalLog > 0 ? Math.round((readCount / totalLog) * 100) + '%' : '—';
+
+        const sentEl = document.getElementById('notif-stat-sent');
+        const readEl = document.getElementById('notif-stat-read');
+        const pendEl = document.getElementById('notif-stat-pending');
+        const rateEl = document.getElementById('notif-stat-rate');
+        if (sentEl) sentEl.textContent = sentCount;
+        if (readEl) readEl.textContent = readCount;
+        if (pendEl) pendEl.textContent = pendCount;
+        if (rateEl) rateEl.textContent = rate;
+
+        // Render recent notifications
+        const listEl = document.getElementById('notif-recent-list');
+        if (!listEl) return;
+        if (totalLog === 0) {
+          listEl.innerHTML = '<div style="text-align:center;padding:20px;color:var(--gray-dark);font-size:13px;">🔔 Aucune notification pour l\'instant</div>';
+        } else {
+          const icons = { calendrier:'📅', sensible:'🔴', diffusion:'📢', agent:'👥', dossier:'📋', bot:'🤖', test:'🔔' };
+          listEl.innerHTML = notifications.map(nodif => {
+            const datetime = new Date(nodif.created_at).toLocaleString('fr-FR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
+            const icon = icons[nodif.type] || '🔔';
+            const bg = nodif.is_read ? '' : 'var(--gray)';
+            return '<div onclick="markNotifRead(' + nodif.id + ')" class="notifitem" style="padding:10px 6px; background:' + bg + ';"' +
+              'onmouseenter="this.style.background=\'var(--gold-pale)\'" onmouseleave="this.style.background=\'' + bg + '\'">' +
+              '<div style="display:flex;justify-content:space-between;margin-bottom:2px;">' +
+              '<span style="font-weight:' + (nodif.is_read ? '400' : '700') + ';color:var(--dark);">' + icon + ' ' + nodif.message + '</span>' +
+              '<span style="color:var(--gray-dark);font-size:10px;white-space:nowrap;margin-left:8px;">' + datetime + '</span>' +
+              '</div></div>';
+          }).join('');
+        }
+      }
+
+      async function toggleNotif(btn, key) {
+        btn.classList.toggle('on');
+        const isOn = btn.classList.contains('on');
+        localStorage.setItem('sngbp_ntog_' + key, isOn ? '1' : '0');
+
+        const payload = {
+          action: isOn ? 'activate' : 'deactivate',
+          notif : key,
+          method: 'toggle'
+        };
+
+        const result = await apiMake(NOTIFI_WEBHOOKS, payload);
+
+        if (result) {
+          showToast(isOn ? '✅ Notification activée — Make.com notifié' : '🔕 Notification désactivée', 'ok');
+        } else {  
+          showToast('❌ Erreur, le rappel a échoué!', 'err'); return;
+        }
+
+        addNotifEntry((isOn ? '✅ Notification activée : ' : '🔕 Notification désactivée : '), 'notification');
+      }
+
+      async function markNotifRead(idx) {
+        const response = await apiPatch('notifications', `id=eq.${idx}`, {is_read:true});
+
+        if (response) {
+          loadNotifs();
+        } else {
+          showToast('❌ Impossible de marquer la notification comme lue', 'err');
+        }
+      }
+
+      function sendTestNotification() {
+        addNotifEntry('🔔 Notification test envoyée depuis le dashboard', 'test');
+        showToast('🔔 Notification test envoyée !', 'ok');
+        loadNotifs();
+      }
+      // ─── END NOTIFICATIONS ─────────────────────────────────────────────────
+
+
+      async function loadConfig() {
+        try{
+          const d=await api('documents','select=id');
+          const n=await api('documents','embedding=is.null&select=id');
+          document.getElementById('cfg-docs').textContent=d.length;
+          document.getElementById('cfg-emb').textContent=n.length===0?'✅ 0':'⚠️ '+n.length;
+        }catch(e){}
+        try{
+          const c=await api('conversations','select=id');
+          document.getElementById('cfg-convs').textContent=c.length;
+        }catch(e){document.getElementById('cfg-convs').textContent='Table non créée';}
+      }
+      
+      function initHabList() {
+        users = loadUsers();
+        const extra = users.filter(function(u){return u.role!=='admin';});
         const el=document.getElementById('hab-list');
         extra.forEach(function(u){
           const d=document.createElement('div');
@@ -2149,18 +2413,42 @@
             '<button data-unom="'+u.nom+'" onclick="removeUser(this)" style="margin-top:8px;padding:4px 10px;font-size:11px;border:none;border-radius:7px;background:#fdecea;color:var(--red);cursor:pointer;font-family:Cairo,sans-serif;">🗑️ Supprimer</button>';
           el.appendChild(d);
         });
-      }}
-      function closeModalById(id){document.getElementById(id).classList.remove('open');}
-      function closeModal(e,id){if(e.target===document.getElementById(id))closeModalById(id);}
+      }
+      
+      function openModal(id) { document.getElementById(id).classList.add('open'); }
 
-      function showToast(msg,type){
-        type=type||'';
-        const t=document.getElementById('toast');
-        t.textContent=msg;
-        t.className='toast show'+(type?' '+type:'');
-        setTimeout(function(){t.classList.remove('show');},3000);
+      function genererFichier() {
+        const nonAdmin = users.filter(function(u){return u.role!=='admin';});
+        const usersLine = "const USERS_DATA=[\n  {nom:'Administrateur SNGBP-CDT',pwd:'CDT2026',role:'admin',bpr:'all'}"+
+          (nonAdmin.length>0?',\n  '+nonAdmin.map(function(u){return JSON.stringify(u);}).join(',\n  '):'')+
+          "\n];";
+        const marker="const USERS_DATA=[";
+        const endMarker="];";
+        let content=document.documentElement.outerHTML;
+        const startIdx=content.indexOf(marker);
+        const endIdx=content.indexOf(endMarker,startIdx)+endMarker.length;
+        const newContent=content.substring(0,startIdx)+usersLine+content.substring(endIdx);
+        const blob=new Blob([newContent],{type:'text/html'});
+        const a=document.createElement('a');
+        a.href=URL.createObjectURL(blob);
+        a.download='index.html';
+        a.click();
+        showToast('✅ Fichier téléchargé ! Déposez-le sur Netlify.','ok');
       }
 
+      function closeModalById(id) {document.getElementById(id).classList.remove('open');}
+      
+      function closeModal(e, id) {if(e.target===document.getElementById(id))closeModalById(id);}
+
+      function showToast(msg, type) {
+        type = type || '';
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.className = 'toast show' + (type ? ' ' + type : '');
+        setTimeout(function() {t.classList.remove('show');}, 3000);
+      }
+      //{{replace(13.data[].content; """"; "\""")}}
+      //
       updUF();
     </script>
   </body>
